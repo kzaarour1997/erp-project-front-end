@@ -3,7 +3,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { Redirect } from "react-router-dom";
 import Sidenav from "./Sidenav";
-import Pagination from './Pagination';
+import Pagination from "./Pagination";
 
 const Admins = () => {
   const [firstName, setFirstName] = useState("");
@@ -34,7 +34,6 @@ const Admins = () => {
   const [newfirstnameErr, setnewFirstnameErr] = useState("");
   const [newimageErr, setnewImageErr] = useState("");
   const [infoErr, setInfoErr] = useState("");
-
 
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage, setPostsPerPage] = useState(6);
@@ -255,19 +254,18 @@ const Admins = () => {
     }
   };
 
-
   const indexOfLastPost = currentPage * postsPerPage;
-    // console.log("indexOfLastPost: ", indexOfLastPost);
+  // console.log("indexOfLastPost: ", indexOfLastPost);
 
-    const indexOfFirstPost = indexOfLastPost - postsPerPage;
-    // console.log("indexOfFirstPost: ", indexOfFirstPost);
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  // console.log("indexOfFirstPost: ", indexOfFirstPost);
 
-    const currentPosts = filteredData.slice(indexOfFirstPost, indexOfLastPost);
+  const currentPosts = filteredData.slice(indexOfFirstPost, indexOfLastPost);
 
-    const paginate = pageNumber => {
-        setCurrentPage(pageNumber);
-    };
-    console.log("currentPosts: ", currentPosts);
+  const paginate = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+  console.log("currentPosts: ", currentPosts);
 
   return (
     <div className="admin">
@@ -284,7 +282,7 @@ const Admins = () => {
           >
             Add Admin
           </button>
-          
+
           <form className="search">
             <input
               value={search}
@@ -305,12 +303,13 @@ const Admins = () => {
               )}`}
               alt="error"
             />
-          <div className="admin_name">
-        <span >{localStorage.getItem("username")}</span>
-        </div>
+           
           </div>
+          <div className="admin_name">
+              <span>{localStorage.getItem("username")}</span>
+            </div>
         </div>
-       
+
         <h1>
           Number of Admins is{"  "}
           <span className="badge badge-secondary">{numOfAdmins}</span>
@@ -322,7 +321,7 @@ const Admins = () => {
         )}
         <div className="admin">
           {filteredData.length === 0 ? (
-            <div>No result found!</div>
+            <div className = "no_result">No result found!</div>
           ) : (
             currentPosts.map((arr) => {
               return (
@@ -404,7 +403,8 @@ const Admins = () => {
                         <br></br>
                         <label className="updateLabel">
                           Image
-                          <input
+                        </label>
+                        <input
                             className="form-control"
                             type="file"
                             name="image"
@@ -415,7 +415,6 @@ const Admins = () => {
                               console.log(e.target.files[0]);
                             }}
                           />
-                        </label>
                         <button
                           id="change1"
                           className="Button_update"
@@ -428,7 +427,7 @@ const Admins = () => {
                       </ul>
                     </div>
                     <button
-                      className="Button"
+                      className="Button Button_delete"
                       id="change"
                       onClick={() => {
                         deleteItem(arr.id);
@@ -441,7 +440,6 @@ const Admins = () => {
               );
             })
           )}
-         
         </div>
         <div className="modal fade" id="myModal" role="dialog">
           <div className="modal-dialog modal-lg">
@@ -592,17 +590,15 @@ const Admins = () => {
               </div>
             </div>
           </div>
-          
         </div>
         <div className="container mt-5">
-                    <Pagination
-                        paginate={paginate}
-                        postsPerPage={postsPerPage}
-                        totalPosts={filteredData.length}
-                    />
-    </div>
+          <Pagination
+            paginate={paginate}
+            postsPerPage={postsPerPage}
+            totalPosts={filteredData.length}
+          />
+        </div>
       </div>
-   
     </div>
   );
 };

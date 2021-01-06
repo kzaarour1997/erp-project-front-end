@@ -22,18 +22,21 @@ button {
   margin-right: 1vw;
 }
 
+.buttons_under_admin > .dropdown > #change2 {
+  margin-left: -13%;
+}
+
 button:hover {
   /* background: linear-gradient(to top right, #fee715 42%, #101820 76%); */
   border: transparent;
 }
 
-[type = "submit"]{
+[type="submit"] {
   margin-left: 9vw;
 }
 
 .submit:hover {
   color: white;
-
 }
 
 .fa {
@@ -103,7 +106,6 @@ body::before {
   height: 24px;
   width: 24px;
   left: 86%;
- 
 }
 
 /* Color/shape of close button cross */
@@ -111,30 +113,24 @@ body::before {
   background: #fee715ff;
 }
 
-
-
 /*---------------------------SideNav Start---------------------------------*/
 .bm-menu-wrap {
   position: fixed;
   height: 100%;
 }
 
-
 .bm-morph-shape {
   fill: #373a47;
 }
-
 
 .bm-item-list {
   color: #b8b7ad;
   padding: 1em;
 }
 
-
 .bm-item {
   display: inline-block;
 }
-
 
 .bm-overlay {
   background: rgba(0, 0, 0, 0.3);
@@ -161,17 +157,16 @@ body::before {
   z-index: 10;
 }
 
-
-.dropdown-menu > .error_update{
+.dropdown-menu > .error_update {
   margin-left: 1vw;
 }
 
-.bm-menu > .bm-item-list{
+.bm-menu > .bm-item-list {
   background-color: black;
   padding-top: 4vw;
 }
 
-.bm-menu > .bm-item-list > .bm-item > .link{
+.bm-menu > .bm-item-list > .bm-item > .link {
   font-size: 20px;
   line-height: 3;
   color: white;
@@ -189,7 +184,7 @@ body::before {
 
 .search__field {
   width: 30vw;
-  margin-left: 21vw;
+  margin-left: 15vw;
   padding: 5px;
   border-radius: 2%;
   border: transparent;
@@ -209,8 +204,11 @@ body::before {
 
 img {
   vertical-align: middle;
-  width: 21vw;
-  height: auto;
+  width: 8vw;
+  height: 16vh;
+  margin-left: 60px;
+  border-radius: 50%;
+  margin-top: 19px;
 }
 
 p {
@@ -218,7 +216,7 @@ p {
 }
 
 h1 {
-  text-align: center;
+  margin-left: 24vw;
   color: white;
 }
 
@@ -236,16 +234,31 @@ h1 {
 
 .admins {
   display: grid;
-  margin-left: 31px;
+  text-align: center;
+  margin-top: 4px;
+}
+
+.admin > .parent {
+  border: 1px white solid;
+  width: 17vw;
+  height: 20vw;
+  border-radius: 2%;
+  background: rgba(0, 0, 0, 0.5);
 }
 
 .buttons_under_admin {
-  display: flex;
-  margin-left: 33px;
+  /* display: flex; */
+  margin-left: 64px;
+}
+
+.Button_delete {
+  margin-top: 10px;
+  position: relative;
+  left: 41px;
 }
 
 .buttons_under_admin > button {
-  margin-left: 0;
+  margin-left: -15px;
 }
 
 .Button {
@@ -253,10 +266,10 @@ h1 {
   border-radius: 8%;
   padding: 6px;
 }
- .open > .dropdown-menu {
+.open > .dropdown-menu {
   display: block;
   width: 19vw;
-  height: 75vh;
+  height: 53vh;
 }
 
 .form-control {
@@ -267,89 +280,273 @@ h1 {
   width: 18vw;
 }
 
-label {
+label { 
   color: black;
-  margin-left: 5.5vw;
+  margin-left: 4.6vw;
 }
 
 .updateLabel {
   margin-left: 1.2vw;
 }
-.btn-lg{
+.btn-lg {
   margin-left: 25vw;
   margin-top: 2vw;
 }
 
-.Button_update{
-
+.Button_update {
   border: transparent;
   border-radius: 8%;
   padding: 0 23px;
   margin-left: 6vw;
   margin-top: 1vw;
   margin-bottom: 1vw;
-
 }
 
-.form-control-login{
+.form-control-login {
   padding: 6px;
   border: transparent;
   border-bottom: 1px #101820ff solid;
   box-shadow: 5px 5px #101820ff;
 }
 
-.login-label{
+.login-label {
   margin-left: 0;
   color: white;
 }
 
-.user-image{
-  width:60px;
+.user-image {
+  width: 60px;
   height: 60px;
   border-radius: 50%;
   border: 2px green solid;
-  margin-left: 12vw;
+  margin-left: 22vw;
+  margin-top: 2px;
 }
 
-
-.username-section{
+.username-section {
   display: flex;
   flex-direction: row-reverse;
 }
 
-.admin_name{
-  position: absolute;
-  top: 6.2vw;
-  margin-right: 0.111vw;
+.admin_name {
+  position: relative;
+  top: 4.6vw;
+  right: 3.8vw;
   color: white;
 }
 
-.err_pos{
+.err_pos {
   margin-left: 5vw;
 }
 
-.bm-item > #change{
+.bm-item > #change {
   margin-top: 6vh;
 }
 
-#change{
+#change {
   color: black;
 }
 
-.password_field{
+.password_field {
   width: 42vw;
   padding: 6px;
   margin-bottom: 2vw;
 }
 
-.submit_pass{
+.submit_pass {
   margin-left: 6vw;
 }
 
-.progress{
+.progress {
   height: 8px;
 }
 
-.pagination{
+.pagination {
   margin-left: 23vw;
+}
+
+.no_result{
+  color: red;
+  font-size: 22px;
+  position: relative;
+  left: 31.1vw;
+}
+
+
+@media only screen and (max-width: 600px) {
+
+  .container{
+    width: 480px;
+    margin-top: -25px;
+  }
+
+  [type="submit"] {
+    margin-left: -5vw;
+    margin-top: 25px;
+  }
+
+
+  .login_block{
+    top: 39px;
+    margin-top: 25vw;
+  }
+  .form-control-login{
+    width: 60vw;
+    margin-left: -27vw;
+  }
+
+  .login-label{
+    margin-left: -27vw;
+  }
+
+  .fa{
+    left: -14%;
+  }
+
+  .header{
+    display: inline;
+  }
+
+  .search__field{
+    width: 80vw;
+    margin-left: 0;
+  }
+
+  .user-image {
+    bottom: 20vw;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    position: relative;
+    right: 6vw;
+    border: 2px green solid;
+    margin-left: 22vw;
+    margin-top: 2px;
+}
+.admin_name {
+  position: relative;
+  top: -20.4vw;
+  right: -76.2vw;
+  color: white;
+}
+
+h1 {
+  margin-left: 6px;
+  color: white;
+  margin-top: 1vw;
+}
+
+.admin{
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.admin > .parent{
+  width: 48vw;
+  height: 64vw;
+  margin-left: 16vw;
+}
+
+.buttons_under_admin > .dropdown > #change2 {
+  margin-left: -7%;
+  margin-top: 17px;
+  padding: 6px 1px;
+}
+
+.buttons_under_admin > button {
+  margin-left: -49px;
+  margin-top: 32px;
+}
+
+.bm-burger-button {
+  margin-right: 155vw;
+}
+
+.Button_delete{
+  position: relative;
+  left: 74px;
+}
+
+img {
+  vertical-align: middle;
+  width: 20vw;
+  height: 16vh;
+  margin-left: 66px;
+  border-radius: 50%;
+  margin-top: 19px;
+}
+
+.open > .dropdown-menu {
+  display: block;
+  width: 56vw;
+  height: 79vh;
+}
+
+.btn-lg {
+  margin-left: 34vw;
+  margin-top: 7vw;
+}
+
+
+.Button_update {
+    border: transparent;
+    border-radius: 8%;
+    padding: 0 23px;
+    margin-left: 19vw;
+    margin-top: 5vw;
+    margin-bottom: 0vw;
+}
+
+.dropdown-menu > .error_update {
+  margin-left: 4vw;
+}
+
+
+.updateLabel {
+    margin-left: 5.2vw;
+}
+
+
+.container > .header > [type="button"] {
+    margin-left: 0;
+    position: relative;
+    top:26vw;
+}
+
+.user-image {
+  bottom: 20vw;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  position: relative;
+  right: 6vw;
+  border: 2px green solid;
+  margin-left: 22vw;
+  margin-top: -3px;
+}
+
+.modal-content{
+  width: 96vw;
+}
+
+.password_field{
+  width: 74vw;
+}
+.submit_pass{
+  position: relative;
+  left: 40vw;
+  top: -13vw;
+}
+
+.error_msg{
+  position: relative;
+  left: -27vw;
+}
+
+.no_result{
+  color: red;
+  font-size: 22px;
+  margin-left: 23vw;
+}
+
 }
