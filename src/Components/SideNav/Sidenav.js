@@ -5,6 +5,8 @@ import zxcvbn from "zxcvbn";
 import Axios from "axios";
 import { useHistory } from "react-router-dom";
 
+import './SideNav.css';
+
 const Sidenav = () => {
   const [isPassShown, setIsPassShown] = useState(false);
 
@@ -117,19 +119,19 @@ const Sidenav = () => {
               <h4 className="modal-title">Change your current password</h4>
             </div>
             <form className="pass-form" encType="multipart/form-data">
-              <div className="modal-body">
+              <div className="modal-body-password">
                 <div className="form-group">
                   {passError ? (
-                    <div className="alert alert-danger">{passError}</div>
+                    <div className="error_message">{passError}</div>
                   ) : (
                     ""
                   )}
-                  <label>
+                  <label className="label-password-modal">
                     Enter your new password
                     <br />
                     <input
                       type={isPassShown ? "text" : "password"}
-                      className="password_field"
+                      className="password-field-modal"
                       placeholder="Enter your new password"
                       value={newPass}
                       onChange={(e) => {
@@ -139,13 +141,13 @@ const Sidenav = () => {
                   </label>
                 </div>
                 <div className="form-group mb1">
-                  <label>
+                  <label className="label-password-modal">
                     Confirm your new password
                     <div className="eye">
                       <input
                         type={isPassShown ? "text" : "password"}
                         placeholder="Confirm your new password"
-                        className="password_field"
+                        className="password-field-modal"
                         value={confirmPass}
                         onChange={(e) => {
                           setConfirmPass(e.target.value);
@@ -168,14 +170,14 @@ const Sidenav = () => {
                 </div>
                 <button
                   type="submit"
-                  className="btn submit_pass"
+                  className="btn submit-pass-modal"
                   onClick={handleChange}
                 >
                   Submit
                 </button>
               </div>
             </form>
-            <div className="modal-footer">
+            <div className="modal-footer-password">
               <button
                 type="button"
                 className="btn btn-default"

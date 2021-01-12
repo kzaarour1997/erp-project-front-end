@@ -1,5 +1,5 @@
 import React from "react";
-import Sidenav from "./Sidenav";
+import Sidenav from "./SideNav/Sidenav";
 
 const Projects = () => {
   return (

@@ -1,57 +1,3 @@
-/*-----------------------------Login Start-----------------------------*/
-[type="text"],
-[type="password"],
-[type="email"],
-[type="file"] {
-  width: 59%;
-  border: transparent;
-  border-bottom: 1px #101820ff solid;
-  box-shadow: 2px 2px #101820ff;
-}
-
-.btn-block {
-  width: 20%;
-  padding: 4px;
-  display: inline;
-}
-
-button {
-  background-color: #fee715ff;
-  box-shadow: 2px 2px #101820ff;
-  margin-left: -1%;
-  margin-right: 1vw;
-}
-
-.buttons_under_admin > .dropdown > #change2 {
-  margin-left: -13%;
-}
-
-button:hover {
-  /* background: linear-gradient(to top right, #fee715 42%, #101820 76%); */
-  border: transparent;
-}
-
-[type="submit"] {
-  margin-left: 9vw;
-}
-
-.submit:hover {
-  color: white;
-}
-
-.fa {
-  font-weight: 900;
-  position: relative;
-  left: -7%;
-  bottom: 0px;
-}
-
-.login {
-  overflow-x: hidden;
-}
-label {
-  color: white;
-}
 body {
   overflow-x: hidden;
 }
@@ -69,484 +15,223 @@ body::before {
   z-index: -1;
 }
 
-.login_block {
+/*------------------------------Modal Add Start----------------------*/
+
+.modal-content {
+  height: 44vw;
+}
+
+.modal-body {
   position: relative;
-  top: 75px;
-  left: 80px;
+  left: 13vw;
+  line-height: 2;
 }
 
-.error_msg {
-  color: red;
-}
-
-/*-----------------------------Login End-----------------------------*/
-
-.bm-burger-button {
-  position: fixed;
-  width: 36px;
-  height: 30px;
-  right: 36px;
-  top: 21px;
-}
-
-.bm-menu-wrap {
-  -webkit-transition: none !important;
-  -moz-transition: none !important;
-  -o-transition: none !important;
-  transition: 0.2s ease-in-out !important;
-}
-
-/* Color/shape of burger icon bars */
-.bm-burger-bars {
-  background: #fee715ff;
-}
-
-/* Position and sizing of clickable cross button */
-.bm-cross-button {
-  height: 24px;
-  width: 24px;
-  left: 86%;
-}
-
-/* Color/shape of close button cross */
-.bm-cross {
-  background: #fee715ff;
-}
-
-/*---------------------------SideNav Start---------------------------------*/
-.bm-menu-wrap {
-  position: fixed;
-  height: 100%;
-}
-
-.bm-morph-shape {
-  fill: #373a47;
-}
-
-.bm-item-list {
-  color: #b8b7ad;
-  padding: 1em;
-}
-
-.bm-item {
-  display: inline-block;
-}
-
-.bm-overlay {
-  background: rgba(0, 0, 0, 0.3);
-}
-
-.bm-item {
-  display: inline-block;
-  color: #d1d1d1;
-  margin-bottom: 10px;
-  text-align: center;
-  text-decoration: none;
-  transition: color 0.2s;
-}
-
-.bm-item:hover {
-  color: #ffffff;
-}
-.bm-menu-wrap {
+.modal-footer {
   position: relative;
-  right: 0;
-  top: 0;
-  height: 100%;
-  min-width: 30%;
-  z-index: 10;
+  top: 3vw;
 }
 
-.dropdown-menu > .error_update {
-  margin-left: 1vw;
+.btn-default {
+  margin-top: 1px;
 }
 
-.bm-menu > .bm-item-list {
-  background-color: black;
-  padding-top: 4vw;
-}
-
-.bm-menu > .bm-item-list > .bm-item > .link {
-  font-size: 20px;
-  line-height: 3;
-  color: white;
-  text-decoration: none;
-}
-
-/*-------------------------------------SideNav end----------------------------*/
-
-/*--------------------------------------Search Start-------------------------------*/
-
-.header {
-  display: flex;
-  margin-top: 20px;
-}
-
-.search__field {
-  width: 30vw;
-  margin-left: 15vw;
-  padding: 5px;
-  border-radius: 2%;
-  border: transparent;
+.btn-block {
   position: relative;
-  top: 20px;
+  left: 12vw;
+  top: 2vw;
+}
+/*------------------------------Modal Add End-------------------------*/
+
+/***employeeInfo*******/
+
+.background {
+  background: rgba(0, 0, 0, 0.5);
+  margin: 2vw 0 1vw 0;
+  transform: skewX(-20deg);
+  padding: 0.3vw 0;
+  border: 1px #fee715ff solid;
+  box-shadow: 10px 10px rgba(0, 0, 0, 0.6);
 }
 
-.container {
-  width: 1200px;
+.user_image_rot,
+.button_rot {
+  transform: skewX(20deg);
+  position: relative;
+  left: 6vw;
+}
+
+.sc-bdfBwQ > .becVlZ {
+  position: relative;
+  background: white;
+  width: 33%;
+  height: auto;
+  top: -12%;
+  left: 40%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) skewX(20deg);
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 4px 0 rgba(50, 50, 93, 0.1);
+  border: 3px #fee715ff solid;
+}
+
+/******employeeInfo end*****/
+
+/*******AddEmployeee*******/
+
+/*******AddEmployeeEnd*******/
+
+/* .Modal-module_modalBody__3_RoW {
+  position: relative;
+  max-height: var(--st-dialog-maxContentHeight);
+  overflow-x: hidden;
+} */
+
+.sections {
+  width: 68vw;
   margin-left: 7vw;
 }
 
-.container > .header > [type="button"] {
-  margin-left: 0;
+.container {
+  overflow-x: hidden;
+}
+
+.info {
+  margin-right: 4vw;
+}
+
+/*--------------------------------Modal View Start-------------------------------*/
+
+.user-image-info {
+  width: 18vw;
+  height: auto;
+  margin: 14px 0;
+  border: 3px #ffff99 solid;
+}
+
+strong {
+  font-size: 18px;
+  line-height: 2;
+}
+
+.View_close_btn {
+  color: black;
+  position: relative;
+  left: 18vw;
+  margin: 30px 0;
+  padding: 5px 29px;
+}
+
+.view-btn {
+  background-color: #ffff99;
+  padding: 9px;
+}
+
+/*--------------------------------Modal View End----------------------------------*/
+
+/*--------------------------------Modal Update Start-------------------------------*/
+
+.Modal-module_modalBody__3_RoW {
+  overflow-x: hidden;
+  height: 60vw;
+}
+
+.Modal-Update-btn {
   margin: 20px 0;
+  position: relative;
+  left: 8vw;
+  padding: 5px 29px;
+  background-color: #ffff66;
 }
 
-img {
-  vertical-align: middle;
-  width: 8vw;
-  height: 16vh;
-  margin-left: 60px;
-  border-radius: 50%;
-  margin-top: 19px;
+.Modal-Update-close-btn {
+  margin: 20px 0;
+  position: relative;
+  top: 2vw;
+  left: 18vw;
+  padding: 5px 29px;
 }
 
-p {
-  color: white;
+.updateLabel {
+  color: black;
+  margin: 10px 0;
 }
 
-h1 {
-  margin-left: 24vw;
-  color: white;
+.update-btn {
+  background-color: #ffff66;
+  padding: 9px;
 }
 
-.admin {
-  display: grid;
-  /* overflow-x: hidden; */
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-row-gap: 6vw;
-  margin-bottom: 50px;
-}
+/*---------------------------------Modal Update End-----------------------------------*/
 
-.badge {
-  padding: 10px;
-}
-
-.admins {
-  display: grid;
-  text-align: center;
-  margin-top: 4px;
-}
-
-.admin > .parent {
-  border: 1px white solid;
-  width: 17vw;
-  height: 20vw;
-  border-radius: 2%;
-  background: rgba(0, 0, 0, 0.5);
-}
-
-.buttons_under_admin {
-  /* display: flex; */
-  margin-left: 64px;
-}
+/*---------------------------------Modal Delete Start---------------------------------*/
 
 .Button_delete {
-  margin-top: 10px;
+  background-color: #bf3c41;
+  padding: 9px;
   position: relative;
-  left: 41px;
+  left: 6px;
+  padding: 9px 17px 9px 9px;
 }
 
-.buttons_under_admin > button {
-  margin-left: -15px;
-}
-
-.Button {
-  border: transparent;
-  border-radius: 8%;
-  padding: 6px;
-}
-.open > .dropdown-menu {
-  display: block;
-  width: 19vw;
-  height: 53vh;
-}
-
-.form-control {
-  width: 85%;
-  margin: 0 auto;
-}
-.dropdown-menu {
-  width: 18vw;
-}
-
-label { 
-  color: black;
-  margin-left: 4.6vw;
-}
-
-.updateLabel {
-  margin-left: 1.2vw;
-}
-.btn-lg {
-  margin-left: 25vw;
-  margin-top: 2vw;
-}
-
-.Button_update {
-  border: transparent;
-  border-radius: 8%;
-  padding: 0 23px;
-  margin-left: 6vw;
-  margin-top: 1vw;
-  margin-bottom: 1vw;
-}
-
-.form-control-login {
-  padding: 6px;
-  border: transparent;
-  border-bottom: 1px #101820ff solid;
-  box-shadow: 5px 5px #101820ff;
-}
-
-.login-label {
-  margin-left: 0;
-  color: white;
-}
-
-.user-image {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  border: 2px green solid;
-  margin-left: 22vw;
-  margin-top: 2px;
-}
-
-.username-section {
-  display: flex;
-  flex-direction: row-reverse;
-}
-
-.admin_name {
+.Button_delete_Even {
+  background-color: #bf3c41;
+  padding: 9px;
   position: relative;
-  top: 4.6vw;
-  right: 3.8vw;
-  color: white;
+  left: 6px;
+  padding: 9px 14px 9px 9px;
 }
 
-.err_pos {
-  margin-left: 5vw;
+/*---------------------------------Modal Delete End-------------------------------------*/
+
+.Button_delete_Skew:active,
+.Button_delete_Skew:focus,
+.Button_delete_Skew:focus-visible {
+  border: transparent;
 }
 
-.bm-item > #change {
-  margin-top: 6vh;
+.Button_delete_Skew::before {
+  content: "";
+  position: absolute;
+  width: 15px;
+  height: 100%;
+  background-color: #bf3c41;
+  transform: skewX(21deg);
+  left: -8px;
+  top: 0px;
 }
 
-#change {
-  color: black;
+.Button_delete_Even {
+  transform: skewX(34deg);
 }
 
-.password_field {
-  width: 42vw;
-  padding: 6px;
-  margin-bottom: 2vw;
+.Button_delete_Skew_Even::before {
+  content: "";
+  position: absolute;
+  width: 17px;
+  height: 100%;
+  background-color: #bf3c41;
+  left: -8px;
+  transform: skewX(-18deg);
+  top: 0px;
 }
 
-.submit_pass {
-  margin-left: 6vw;
+/*-----------------------------------KPI Button Start-----------------------------------*/
+
+.KPI_button {
+  padding: 9px;
 }
 
-.progress {
-  height: 8px;
-}
+/*-----------------------------------KPI Button End-----------------------------------*/
 
-.pagination {
-  margin-left: 23vw;
-}
-
-.no_result{
+.no_result {
+  text-align: center;
   color: red;
-  font-size: 22px;
-  position: relative;
-  left: 31.1vw;
+  font-size: 30px;
 }
 
-
-@media only screen and (max-width: 600px) {
-
-  .container{
-    width: 480px;
-    margin-top: -25px;
-  }
-
-  [type="submit"] {
-    margin-left: -5vw;
-    margin-top: 25px;
-  }
-
-
-  .login_block{
-    top: 39px;
-    margin-top: 25vw;
-  }
-  .form-control-login{
-    width: 60vw;
-    margin-left: -27vw;
-  }
-
-  .login-label{
-    margin-left: -27vw;
-  }
-
-  .fa{
-    left: -14%;
-  }
-
-  .header{
-    display: inline;
-  }
-
-  .search__field{
-    width: 80vw;
-    margin-left: 0;
-  }
-
-  .user-image {
-    bottom: 20vw;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    position: relative;
-    right: 6vw;
-    border: 2px green solid;
-    margin-left: 22vw;
-    margin-top: 2px;
-}
-.admin_name {
-  position: relative;
-  top: -20.4vw;
-  right: -76.2vw;
-  color: white;
-}
-
-h1 {
-  margin-left: 6px;
-  color: white;
-  margin-top: 1vw;
-}
-
-.admin{
-  display: grid;
-  grid-template-columns: 1fr;
-}
-
-.admin > .parent{
-  width: 48vw;
-  height: 64vw;
-  margin-left: 16vw;
-}
-
-.buttons_under_admin > .dropdown > #change2 {
-  margin-left: -7%;
-  margin-top: 17px;
-  padding: 6px 1px;
-}
-
-.buttons_under_admin > button {
-  margin-left: -49px;
-  margin-top: 32px;
-}
-
-.bm-burger-button {
-  margin-right: 155vw;
-}
-
-.Button_delete{
-  position: relative;
-  left: 74px;
-}
-
-img {
-  vertical-align: middle;
-  width: 20vw;
-  height: 16vh;
-  margin-left: 66px;
-  border-radius: 50%;
-  margin-top: 19px;
-}
-
-.open > .dropdown-menu {
-  display: block;
-  width: 56vw;
-  height: 79vh;
-}
-
-.btn-lg {
-  margin-left: 34vw;
-  margin-top: 7vw;
-}
-
-
-.Button_update {
-    border: transparent;
-    border-radius: 8%;
-    padding: 0 23px;
-    margin-left: 19vw;
-    margin-top: 5vw;
-    margin-bottom: 0vw;
-}
-
-.dropdown-menu > .error_update {
-  margin-left: 4vw;
-}
-
-
-.updateLabel {
-    margin-left: 5.2vw;
-}
-
-
-.container > .header > [type="button"] {
-    margin-left: 0;
-    position: relative;
-    top:26vw;
-}
-
-.user-image {
-  bottom: 20vw;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  position: relative;
-  right: 6vw;
-  border: 2px green solid;
-  margin-left: 22vw;
-  margin-top: -3px;
-}
-
-.modal-content{
-  width: 96vw;
-}
-
-.password_field{
-  width: 74vw;
-}
-.submit_pass{
-  position: relative;
-  left: 40vw;
-  top: -13vw;
-}
-
-.error_msg{
-  position: relative;
-  left: -27vw;
-}
-
-.no_result{
+.error_message {
   color: red;
-  font-size: 22px;
-  margin-left: 23vw;
-}
-
 }

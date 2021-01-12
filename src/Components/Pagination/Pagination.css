@@ -1,0 +1,35 @@
+.label ,.pagination>li>a{
+    color: black;
+  }
+  
+  .pagination>li>a:hover{
+    color: #fee715ff ;
+  }
+  
+
+  .pagination{
+    background:transparent;
+  }
+  
+  .pagination>li>a{
+    background-color:transparent;
+    border: 1px solid  #ffff66;
+    transform: rotate(45deg);
+  }
+  
+  .pagination >.page-item >.page-link{
+    color: white;
+  }
+  
+  .pagination >.page-item >.page-link:hover{
+    
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px #bf3c41 solid;
+  }
+  
+  .pagination >.page-item >.page-link:link{
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: 1px #ffff66 solid;
+    color:#bf3c41;
+  }

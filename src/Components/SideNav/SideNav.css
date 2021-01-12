@@ -1,0 +1,202 @@
+.header {
+    margin-top: 3vw;
+  }
+  
+  .user-image {
+    height: 5vw;
+    width: 5vw;
+    border-radius: 50%;
+  }
+  
+  .search {
+    position: relative;
+    left: 19%;
+  }
+  
+  .search > input {
+    padding: 7px;
+    border-radius: 0%;
+    border: transparent;
+    border-bottom: 3px black solid;
+  }
+  
+  .profile_admin {
+    margin-top: -1vw;
+  }
+  
+  .admin_name {
+    color: white;
+    width: 20vw;
+    position: relative;
+    left: 0.8vw;
+  }
+  
+  h1 {
+    text-align: center;
+    color: white;
+    font-size: 3em;
+  }
+  
+  .badge {
+    border: 1px #fee715ff solid;
+    transform: scale(1.6) skew(-20deg);
+    border-radius: 0;
+    margin-left: 1vw;
+  }
+  
+  /****header end*****/
+
+
+
+  .bm-burger-button {
+    position: fixed;
+    width: 36px;
+    height: 30px;
+    right: 36px;
+    top: 21px;
+  }
+  
+  .bm-menu-wrap {
+    -webkit-transition: none !important;
+    -moz-transition: none !important;
+    -o-transition: none !important;
+    transition: 0.2s ease-in-out !important;
+  }
+  
+  /* Color/shape of burger icon bars */
+  .bm-burger-bars {
+    background: #fee715ff;
+  }
+  
+  .bm-menu {
+    overflow: hidden;
+  }
+  
+  /* Position and sizing of clickable cross button */
+  .bm-cross-button {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    left: 8vw;
+    top: 1vw;
+  }
+  
+  /* Color/shape of close button cross */
+  .bm-cross {
+    background: #fee715ff;
+  }
+  
+  .bm-menu-wrap {
+    position: fixed;
+    height: 100%;
+  }
+  
+  .bm-morph-shape {
+    fill: #373a47;
+  }
+  
+  .bm-item-list {
+    color: #b8b7ad;
+    padding: 1em;
+  }
+  
+  .bm-item {
+    display: inline-block;
+  }
+  
+  .bm-overlay {
+    background: rgba(0, 0, 0, 0.3);
+  }
+  
+  .bm-item {
+    display: inline-block;
+    color: #d1d1d1;
+    margin-bottom: 10px;
+    text-align: center;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  
+  .bm-item > button {
+    margin-left: 10px;
+    margin-top: 2vw;
+  }
+  
+  button {
+    color: black;
+    border: transparent;
+  }
+  
+  .bm-item:hover {
+    color: #ffffff;
+  }
+  .bm-menu-wrap {
+    position: relative;
+    right: 0;
+    top: 0;
+    height: 100%;
+    min-width: 30%;
+    z-index: 10;
+  }
+  
+  .dropdown-menu > .error_update {
+    margin-left: 1vw;
+  }
+  
+  .bm-menu > .bm-item-list {
+    background-color: black;
+    padding-top: 4vw;
+    position: fixed;
+    width: 19%;
+    left: 0;
+  }
+  
+  .bm-menu > .bm-item-list > .bm-item > .link {
+    font-size: 23px;
+    line-height: 3;
+    color: white;
+    text-decoration: none;
+  }
+  
+  div.btm-item > button {
+    margin-top: 10vw;
+  }
+  
+
+  /*------------------------ Modal Body Start------------------------*/
+
+.modal-body-password{
+  position: relative;
+  top: 6vw;
+  left: 17vw;
+  line-height: 2;
+}
+
+.password-field-modal{
+  width: 30vw;
+  padding: 4px 20px;
+}
+
+.label-password-modal{
+  color: black;
+}
+.modal-footer-password{
+  position: relative;
+  top: 12vw;
+  left: 59vw;
+}
+
+.progress{
+  margin-top: 31px;
+  height: 9px;
+}
+
+.progress-bar{
+  height: 9px;
+}
+
+.submit-pass-modal{
+  margin-left: 10vw;
+  padding: 5px 42px;
+}
+  /*------------------------ Modal Body End -------------------------*/
