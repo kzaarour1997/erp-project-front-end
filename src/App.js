@@ -34,6 +34,7 @@ const App = () => {
 
   const store = createStore(() => [], {}, applyMiddleware());
   return (
+      
     <Provider store={store}>
       <Router>
         {redirectFunc()}
@@ -46,6 +47,9 @@ const App = () => {
             <Route exact path="/Reports" component={Reports} />
           </Switch>
       </Router>
+      <div className="App">
+      <Teams/>
+    </div>
     </Provider>
   );
 };
