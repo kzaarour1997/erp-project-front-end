@@ -1,0 +1,50 @@
+.Button_delete_Admin,
+.Button_delete_Admin_Even {
+  background-color: #bf3c41;
+  position: relative;
+  transform: skewX(20deg);
+  left: 9px;
+  padding: 9px 17px 9px 13px;
+}
+
+.Button_delete_Skew_Admin::before {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 100%;
+  background-color: #bf3c41;
+  transform: skewX(-21deg);
+  left: 62px;
+  top: 0px;
+}
+
+.Button_delete_Admin_Even {
+  transform: skewX(34deg);
+}
+
+.Button_delete_Skew_Admin_Even::before {
+  content: "";
+  position: absolute;
+  width: 17px;
+  height: 100%;
+  background-color: #bf3c41;
+  left: -8px;
+  transform: skewX(-16deg);
+  top: 0px;
+}
+
+.modal-content-admin {
+  height: 46vw;
+}
+
+.Modal-Update-close-btn-Admin {
+  margin: 20px 0;
+  position: relative;
+  top: 1vw;
+  left: 18vw;
+  padding: 5px 29px;
+}
+
+.label-admin {
+  color: black;
+}

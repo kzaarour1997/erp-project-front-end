@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { Redirect } from "react-router-dom";
 import Axios from "axios";
-import "../App.css";
+import "./Login.css";
 
 const Login = () => {
   const [username, setUsername] = useState("");
