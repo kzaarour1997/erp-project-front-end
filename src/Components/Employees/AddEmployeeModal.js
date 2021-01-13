@@ -2,9 +2,8 @@ import React from "react";
 import { useState, useEffect } from "react";
 import Axios from "axios";
 
-
 const AddEmployeeModal = (props) => {
-  // console.log(props);  
+  // console.log(props);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [identity, setIdentity] = useState("");
@@ -12,7 +11,6 @@ const AddEmployeeModal = (props) => {
   const [image, setImage] = useState(null);
   const [email, setEmail] = useState("");
   const [employees, setEmployees] = useState([]);
-
 
   const handleAdd = async (e) => {
     e.preventDefault();
@@ -25,20 +23,20 @@ const AddEmployeeModal = (props) => {
     data.append("phone", phone);
 
     try {
-      await Axios.post("http://localhost:8000/api/employee", data, {
+      await Axios.post("http://localhost:8000/api/team", data, {
         headers: {
           "content-type": "multipart/form-data",
           Authorization: "Bearer " + localStorage.getItem("token"),
         },
       }).then((response) => {
-        setEmployees([...employees, {
-          identity: identity,
-          firstname: firstName,
-          lastname: lastName,
-          email: email,
-          image: image,
-          phone: phone,
-        }]);
+        // setEmployees([...employees, {
+        //   identity: identity,
+        //   firstname: firstName,
+        //   lastname: lastName,
+        //   email: email,
+        //   image: image,
+        //   phone: phone,
+        // }]);
         console.log(response.data);
         console.log(employees);
         localStorage.getItem("token");
@@ -47,8 +45,6 @@ const AddEmployeeModal = (props) => {
       console.log(error);
     }
   };
-
-
 
   return (
     <div className="modal fade" id="myModal" role="dialog">

@@ -1,38 +1,35 @@
 import React from "react";
 import { CustomDialog } from "react-st-modal";
-import KPIModal from "./KPIModal";
+import ViewModal from "./ViewModal";
 
-const KPI = (props) => {
-  console.log(props.kpiEmployee);
+
+const ViewTeam = (props) => {
+  
   return (
     <div
       className="col-md-1"
-      style={{
-        marginTop: "15px",
-        transform: "skewX(20deg)",
-        marginLeft: "-7px",
-      }}
+      style={{ marginTop: "15px", transform: "skewX(20deg)" }}
     >
       <button
         onClick={async () => {
           const result = await CustomDialog(
-            <KPIModal modalKpi={props.kpiEmployee} />,
+            <ViewModal viewModal={props.viewTeam} />,
             {
-              title: "KPI lists",
+              title: "View Team Info",
               showCloseIcon: true,
             }
           );
         }}
-        className="KPI_button"
+        className="view-btn"
         style={{
           position: "relative",
-          left: "7px",
+          left: "10px"
         }}
       >
-        KPI
+        View
       </button>
     </div>
   );
 };
 
-export default KPI;
+export default ViewTeam;

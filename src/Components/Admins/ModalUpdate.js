@@ -51,7 +51,7 @@ function ModalUpdate(props) {
         position: "relative",
         left: "8.4vw",
         marginTop:"15px",
-        top : "6vw"
+        top : "1vw"
     }}
     >
       <label className="updateLabel">FirstName</label>

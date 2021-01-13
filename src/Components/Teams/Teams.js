@@ -1,59 +1,41 @@
 import Axios from "axios";
 import React from "react";
 import { useState, useEffect } from "react";
-
+import TeamInfo from "./TeamInfo";
 import Sidenav from "../SideNav/Sidenav";
 import Pagination from "../Pagination/Pagination";
-import AddAdmin from "./AddAdminModal";
-import AdminInfo from "./AdminInfo";
-import AdminInfoEven from "./AdminInfoEven";
+import AddTeam from "./AddTeamModal";
+import TeamInfoEven from "./TeamInfoEven";
 
-const Admins = () => {
-  const [search, setSearch] = useState("");
+const Teams = () => {
   const [filteredData, setFilteredData] = useState([]);
-  const [users, setUsers] = useState([]);
-  const [render, setRender] = useState(false);
+  const [search, setSearch] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage, setPostsPerPage] = useState(6);
+  const [render, setRender] = useState(false);
 
-  const numOfAdmins = users.length;
+  const [listTeam, setListTeam] = useState([]);
+
+  const numOfTeams = listTeam.length;
 
   useEffect(() => {
-    Axios.get("http://localhost:8000/api/users", {
+    Axios.get("http://localhost:8000/api/team", {
       headers: {
         "content-type": "multipart/form-data",
         Authorization: "Bearer " + localStorage.getItem("token"),
       },
     }).then((response) => {
-      setUsers(response.data);
+      setListTeam(response.data);
     });
   }, [render]);
 
   useEffect(() => {
     setFilteredData(
-      users.filter(
-        (user) =>
-          user.firstname.toLowerCase().includes(search.toLowerCase()) ||
-          user.lastname.toLowerCase().includes(search.toLowerCase()) ||
-          user.email.toLowerCase().includes(search.toLowerCase())
+      listTeam.filter((team) =>
+        team.name.toLowerCase().includes(search.toLowerCase())
       )
     );
-  }, [search, users, render]);
-
-  // useEffect(() => {
-  //   localStorage.getItem("image");
-  //   console.log(localStorage.getItem("image"));
-  // }, []);
-
-  // useEffect(() => {
-  //   localStorage.getItem("id");
-  //   console.log(localStorage.getItem("id"));
-  // }, []);
-
-  // useEffect(() => {
-  //   localStorage.getItem("username");
-  //   console.log(localStorage.getItem("username"));
-  // }, []);
+  }, [search, listTeam]);
 
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
@@ -67,7 +49,6 @@ const Admins = () => {
   return (
     <div className="container container-xs">
       <Sidenav />
-
       <div className="container">
         <div className="row header">
           <div className="col-md-2 col-sm-2">
@@ -78,14 +59,14 @@ const Admins = () => {
               data-toggle="modal"
               data-target="#myModal"
             >
-              Add Admin
+              Add Team
             </button>
           </div>
           <div className="col-md-8 col-sm-6">
             <form className="search">
               <input
                 value={search}
-                placeholder="Find Admins..."
+                placeholder="Find Teams..."
                 type="text"
                 name=""
                 className="search__field"
@@ -111,37 +92,39 @@ const Admins = () => {
           </div>
         </div>
         <h1>
-          Number of Admins is{"  "}
-          <span className="badge badge-secondary">{numOfAdmins}</span>
+          Number of Teams is{"  "}
+          <span className="badge">
+            <span className="badge-secondary">{numOfTeams}</span>
+          </span>
         </h1>
-
         <div className="sections">
           {filteredData.length === 0 ? (
             <div className="no_result">No result found!</div>
           ) : (
             currentPosts.map((arr, index) => {
               if (index % 2 === 0) {
-                return <AdminInfo key={arr.id} admin={arr} />;
+                return <TeamInfo key={arr.id} team={arr} />;
               } else {
-                return <AdminInfoEven key={arr.id} admin={arr} />;
+                return <TeamInfoEven key={arr.id} team={arr} />;
               }
             })
           )}
         </div>
-        <AddAdmin props={{ setRender }} />
-        <div className="row">
-          <div className="col-md-3"></div>
-          <div className="col-md-6" style={{ textAlign: "center" }}>
-            <Pagination
-              paginate={paginate}
-              postsPerPage={postsPerPage}
-              totalPosts={filteredData.length}
-            />
-          </div>
-          <div className="col-md-3"></div>
+        <AddTeam props={{ setRender }} />
+      </div>
+      <div className="row">
+        <div className="col-md-3"></div>
+        <div className="col-md-6" style={{ textAlign: "center" }}>
+          <Pagination
+            paginate={paginate}
+            postsPerPage={postsPerPage}
+            totalPosts={filteredData.length}
+          />
         </div>
+        <div className="col-md-3"></div>
       </div>
     </div>
   );
 };
-export default Admins;
+
+export default Teams;

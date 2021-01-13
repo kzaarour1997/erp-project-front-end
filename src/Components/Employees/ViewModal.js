@@ -5,11 +5,20 @@ import React from "react";
 
 const ViewModal = (props) => {
   // use this hook to control the dialog
+  // console.log(props.employee&&props.employee.teams.name);
+
   const dialog = useDialog();
   const [value, setValue] = useState();
   return (
     <div>
-      <p style={{ color: "black", textAlign: "center" , marginTop:"3vw" , lineHeight:"1.2" }}>
+      <p
+        style={{
+          color: "black",
+          textAlign: "center",
+          marginTop: "3vw",
+          lineHeight: "1.2",
+        }}
+      >
         <span>
           <img
             className="user-image-info"
@@ -42,6 +51,14 @@ const ViewModal = (props) => {
         <span>
           <strong>Phone Number :</strong> <br />
           {props.employee.phone}
+        </span>
+        <br />
+        <span>
+          <strong>
+            {props.employee &&
+              props.employee.teams &&
+              props.employee.teams.name}
+          </strong>
         </span>
       </p>
       <button

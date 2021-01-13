@@ -10,7 +10,7 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
-import Teams from "./Components/Teams";
+import Teams from "./Components/Teams/Teams";
 import Projects from "./Components/Projects";
 import Reports from "./Components/Reports";
 import Employees from "./Components/Employees/Employees";

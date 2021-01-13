@@ -1,16 +1,13 @@
 import React from "react";
-import DeleteEmployee from "./DeleteEmployee";
-import KPI from "./KPI";
-import UpdateEmployee from "./UpdateEmployee";
-import ViewEmployee from "./ViewEmployee";
-import AssignTo from "./AssignTo";
+import ViewTeam from "./ViewTeam";
+import DeleteTeam from "./DeleteTeam";
 
-const EmployeeInfo = (props) => {
+const TeamInfo = (props) => {
   console.log(props);
   return (
-    <div className="row background" key={props.employee.id}>
+    <div className="row background" key={props.team.id}>
       <div className="info">
-        <div className="col-md-1" style={{}}>
+        {/* <div className="col-md-1" style={{}}>
           <img
             src={`http://localhost:8000/storage/${props.employee.image}`}
             alt="error"
@@ -21,7 +18,7 @@ const EmployeeInfo = (props) => {
               left: "27px",
             }}
           />
-        </div>
+        </div> */}
         <div className="col-md-5">
           <p
             style={{
@@ -35,19 +32,16 @@ const EmployeeInfo = (props) => {
               textAlign: "center",
             }}
           >
-            {props.employee.firstname} {props.employee.lastname}
+            {props.team.name}
           </p>
         </div>
-        <div style={{ position: "relative", left: "9.4vw" }}>
-          <ViewEmployee viewEmp={props.employee} />
-          <AssignTo assignTo = {props.employee}/>
-          <UpdateEmployee updateEmployee={props.employee} />
-          <KPI kpiEmployee={props.employee} />
-          <DeleteEmployee deleteEmployee={props.employee} />
+        <div style={{ position: "relative", left: "29.2vw" }}>
+          <ViewTeam viewTeam={props.team} />
+          <DeleteTeam deleteTeam={props.team} />
         </div>
       </div>
     </div>
   );
 };
 
-export default EmployeeInfo;
+export default TeamInfo;

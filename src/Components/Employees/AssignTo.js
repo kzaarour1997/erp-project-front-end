@@ -1,38 +1,34 @@
 import React from "react";
 import { CustomDialog } from "react-st-modal";
-import KPIModal from "./KPIModal";
+import AssignToModal from "./AssignToModal";
 
-const KPI = (props) => {
-  console.log(props.kpiEmployee);
+const AssignTo = (props) => {
+  // console.log(props.assignTo)
   return (
     <div
       className="col-md-1"
-      style={{
-        marginTop: "15px",
-        transform: "skewX(20deg)",
-        marginLeft: "-7px",
-      }}
+      style={{ marginTop: "15px", transform: "skewX(20deg)" }}
     >
       <button
         onClick={async () => {
           const result = await CustomDialog(
-            <KPIModal modalKpi={props.kpiEmployee} />,
+            <AssignToModal assignModal={props.assignTo} />,
             {
-              title: "KPI lists",
+              title: "Assign Employee To A Project",
               showCloseIcon: true,
             }
           );
         }}
-        className="KPI_button"
+        className="view-btn"
         style={{
           position: "relative",
-          left: "7px",
+          right: "5px",
         }}
       >
-        KPI
+        AssignTo
       </button>
     </div>
   );
 };
 
-export default KPI;
+export default AssignTo;

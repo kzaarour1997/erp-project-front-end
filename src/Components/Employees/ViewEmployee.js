@@ -16,6 +16,11 @@ const ViewEmployee = (props) => {
             );
           }}
           className = "view-btn"
+          style={{
+            position: "relative",
+            left: "12px",
+            backgroundColor:"#FFFFCC"
+          }}
         >
          View
         </button>

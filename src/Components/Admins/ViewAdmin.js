@@ -6,7 +6,7 @@ const ViewAdmin = (props) => {
   return (
     <div
       className="col-md-1"
-      style={{ marginTop: "15px", transform: "skewX(20deg)" }}
+      style={{ marginTop: "15px", transform: "skewX(20deg)"  }}
     >
       <button
         onClick={async () => {

@@ -1,20 +1,20 @@
 .Button_delete_Admin,
 .Button_delete_Admin_Even {
   background-color: #bf3c41;
-  padding: 9px;
   position: relative;
-  left: 18px;
-  padding: 9px 17px 9px 9px;
+  transform: skewX(20deg);
+  left: 9px;
+  padding: 9px 17px 9px 13px;
 }
 
 .Button_delete_Skew_Admin::before {
   content: "";
   position: absolute;
-  width: 17px;
+  width: 16px;
   height: 100%;
   background-color: #bf3c41;
-  transform: skewX(21deg);
-  left: -8px;
+  transform: skewX(-21deg);
+  left: 62px;
   top: 0px;
 }
 
@@ -40,7 +40,7 @@
 .Modal-Update-close-btn-Admin {
   margin: 20px 0;
   position: relative;
-  top: 6vw;
+  top: 1vw;
   left: 18vw;
   padding: 5px 29px;
 }

@@ -10,7 +10,7 @@ function UpdateEmployee(props) {
         marginTop: "15px",
         transform: "skewX(20deg)",
         position: "relative",
-        left: "-11px",
+        left: "3px"
       }}
     >
       <button
