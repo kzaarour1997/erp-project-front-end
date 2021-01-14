@@ -7,6 +7,9 @@ const DeleteTeam = (props) => {
 
     const [users , setUsers] = useState("");
 
+    const [deleteList, setDeleteList] = useState(props.deleteTeam.employees);
+    const [deleteItemErr, setDeleteItemErr] = useState("");
+
     const deleteItem = async (id) => {
         try {
           await Axios.delete(`http://localhost:8000/api/team/${id} `, {
@@ -29,15 +32,30 @@ const DeleteTeam = (props) => {
       };
   return (
     <div className="col-md-1" style = {{marginTop: "15px" , marginLeft: "-16px"}}>
-      <button
-        className="Button Button_delete_Admin_Even Button_delete_Skew_Admin_Even"
-        id="change"
-        onClick={() => {
-          deleteItem(props.deleteTeam.id);
-        }}
-      >
-       <span> Delete</span>
-      </button>
+      {deleteList.length > 0 ? (
+        <button
+          className="Button Button_delete_Admin_Even Button_delete_Skew_Admin_Even"
+          id="change"
+          disabled={true}
+          onClick={() => {
+            setDeleteItemErr(
+              "You Can Not Delete A Team That Contain A Project"
+            );
+          }}
+        >
+          <span> Delete</span>
+        </button>
+      ) : (
+        <button
+          className="Button Button_delete_Admin_Even Button_delete_Skew_Admin_Even"
+          id="change"
+          onClick={() => {
+            deleteItem(props.deleteTeam.id);
+          }}
+        >
+          <span> Delete</span>
+        </button>
+      )}
     </div>
   );
 };

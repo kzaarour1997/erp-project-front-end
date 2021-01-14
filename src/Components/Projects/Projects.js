@@ -1,57 +1,40 @@
-import Axios from "axios";
 import React from "react";
+import Axios from "axios";
 import { useState, useEffect } from "react";
-
 import Sidenav from "../SideNav/Sidenav";
 import Pagination from "../Pagination/Pagination";
-import AddAdmin from "./AddAdminModal";
-import AdminInfo from "./AdminInfo";
-import AdminInfoEven from "./AdminInfoEven";
+import AddProjects from "./AddProjects";
 
-const Admins = () => {
-  const [search, setSearch] = useState("");
+const Projects = () => {
   const [filteredData, setFilteredData] = useState([]);
-  const [users, setUsers] = useState([]);
-  const [render, setRender] = useState(false);
+  const [search, setSearch] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage, setPostsPerPage] = useState(6);
 
-  const numOfAdmins = users.length;
+  const [listProject, setlistProject] = useState([]);
+  // const [nestedListProject , setNestedListProject] = useState([]);
+
+  const numOfProjects = listProject.length;
 
   useEffect(() => {
-    Axios.get("http://localhost:8000/api/users", {
+    Axios.get("http://localhost:8000/api/project", {
       headers: {
         "content-type": "multipart/form-data",
         Authorization: "Bearer " + localStorage.getItem("token"),
       },
     }).then((response) => {
-      setUsers(response.data);
+      // console.log(response.data&&response.data[0].id);
+      setlistProject(response.data);
     });
-  }, [render]);
+  }, []);
 
   useEffect(() => {
     setFilteredData(
-      users.filter(
-        (user) =>
-          user.firstname.toLowerCase().includes(search.toLowerCase())
+      listProject.filter((project) =>
+        project.project_name.toLowerCase().includes(search.toLowerCase())
       )
     );
-  }, [search, users, render]);
-
-  // useEffect(() => {
-  //   localStorage.getItem("image");
-  //   console.log(localStorage.getItem("image"));
-  // }, []);
-
-  // useEffect(() => {
-  //   localStorage.getItem("id");
-  //   console.log(localStorage.getItem("id"));
-  // }, []);
-
-  // useEffect(() => {
-  //   localStorage.getItem("username");
-  //   console.log(localStorage.getItem("username"));
-  // }, []);
+  }, [search, listProject]);
 
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
@@ -61,12 +44,10 @@ const Admins = () => {
     setCurrentPage(pageNumber);
   };
   console.log("currentPosts: ", currentPosts);
-
   return (
-    <div className="container container-xs">
+    <div>
       <Sidenav />
-
-      <div className="container">
+      <div className="container container-xs">
         <div className="row header">
           <div className="col-md-2 col-sm-2">
             <button
@@ -76,14 +57,14 @@ const Admins = () => {
               data-toggle="modal"
               data-target="#myModal"
             >
-              Add Admin
+              Add Projects
             </button>
           </div>
           <div className="col-md-8 col-sm-6">
             <form className="search">
               <input
                 value={search}
-                placeholder="Find Admins..."
+                placeholder="Find Project..."
                 type="text"
                 name=""
                 className="search__field"
@@ -109,37 +90,42 @@ const Admins = () => {
           </div>
         </div>
         <h1>
-          Number of Admins is{"  "}
-          <span className="badge badge-secondary">{numOfAdmins}</span>
+          Number of Projects is{"  "}
+          <span className="badge">
+            <span className="badge-secondary">{numOfProjects}</span>
+          </span>
         </h1>
-
         <div className="sections">
           {filteredData.length === 0 ? (
             <div className="no_result">No result found!</div>
           ) : (
-            currentPosts.map((arr, index) => {
-              if (index % 2 === 0) {
-                return <AdminInfo key={arr.id} admin={arr} />;
-              } else {
-                return <AdminInfoEven key={arr.id} admin={arr} />;
-              }
+            // currentPosts.map((arr, index) => {
+            //   if (index % 2 === 0) {
+            //     return <EmployeeInfo key={arr.id} employee={arr} />;
+            //   } else {
+            //     return <EmployeeInfoEven key={arr.id} employee={arr} />;
+            //   }
+            // })
+            currentPosts.map((val) => {
+              return <div key={val.id}>{val.project_name}</div>;
             })
           )}
         </div>
-        <AddAdmin props={{ setRender }} />
-        <div className="row">
-          <div className="col-md-3"></div>
-          <div className="col-md-6" style={{ textAlign: "center" }}>
-            <Pagination
-              paginate={paginate}
-              postsPerPage={postsPerPage}
-              totalPosts={filteredData.length}
-            />
-          </div>
-          <div className="col-md-3"></div>
+        <AddProjects />
+      </div>
+      <div className="row">
+        <div className="col-md-3"></div>
+        <div className="col-md-6" style={{ textAlign: "center" }}>
+          <Pagination
+            paginate={paginate}
+            postsPerPage={postsPerPage}
+            totalPosts={filteredData.length}
+          />
         </div>
+        <div className="col-md-3"></div>
       </div>
     </div>
   );
 };
-export default Admins;
+
+export default Projects;

@@ -1,0 +1,15 @@
+textarea {
+  width: 37.5vw;
+  height: 12vw;
+}
+
+.modal-content-project {
+  height: auto;
+}
+
+.modal-footer-project{
+  padding: 15px;
+  text-align: right;
+  border-top: 1px solid #e5e5e5;
+  margin-top: 2vw;
+}

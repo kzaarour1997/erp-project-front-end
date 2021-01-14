@@ -11,7 +11,7 @@ import {
   Redirect,
 } from "react-router-dom";
 import Teams from "./Components/Teams/Teams";
-import Projects from "./Components/Projects";
+import Projects from "./Components/Projects/Projects";
 import Reports from "./Components/Reports";
 import Employees from "./Components/Employees/Employees";
 
