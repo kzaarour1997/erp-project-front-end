@@ -2,13 +2,18 @@ import React from "react";
 import { useState, useEffect } from "react";
 import Axios from "axios";
 
-import "./Projects.css";
-import { bottom } from "@popperjs/core";
-
 const AddProjects = () => {
   const [projectName, setProjectName] = useState("");
   const [description, setDescription] = useState("");
-  const [listProject, setListProject] = useState([]);
+
+  const [search, setSearch] = useState("");
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage, setPostsPerPage] = useState(6);
+
+  const paginate = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
 
   const handleAdd = async (e) => {
     e.preventDefault();
@@ -43,6 +48,13 @@ const AddProjects = () => {
           </div>
           <form encType="multipart/form-data">
             <div className="modal-body" style={{ lineHeight: "3" }}>
+              <form
+                style={{
+                  marginBottom: "10px",
+                  width: "50vw",
+                  marginLeft: "50px",
+                }}
+              ></form>
               <label htmlFor="name" className="label-admin">
                 Project Name:
               </label>
@@ -75,7 +87,7 @@ const AddProjects = () => {
                 style={{
                   position: "relative",
                   left: "-25vw",
-                  top: "4vw",
+                  top: "3vw",
                   marginBottom: "2vw",
                 }}
                 onClick={handleAdd}

@@ -4,6 +4,9 @@ import { useState, useEffect } from "react";
 import Sidenav from "../SideNav/Sidenav";
 import Pagination from "../Pagination/Pagination";
 import AddProjects from "./AddProjects";
+import { useContext } from "react";
+import { dataContext } from "../Context/Context";
+import ProjectInfo from "./ProjectInfo";
 
 const Projects = () => {
   const [filteredData, setFilteredData] = useState([]);
@@ -11,22 +14,17 @@ const Projects = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage, setPostsPerPage] = useState(6);
 
-  const [listProject, setlistProject] = useState([]);
-  // const [nestedListProject , setNestedListProject] = useState([]);
+  const { listProject, setListProject } = useContext(dataContext);
+  // console.log(listProject);
+
+  const { listEmployee, setListEmployee } = useContext(dataContext);
+  // console.log(listEmployee)
+
+  const {employeeProjectRole,setEmployeeProjectRole} = useContext(dataContext);
+
+  // console.log(employeeProjectRole);
 
   const numOfProjects = listProject.length;
-
-  useEffect(() => {
-    Axios.get("http://localhost:8000/api/project", {
-      headers: {
-        "content-type": "multipart/form-data",
-        Authorization: "Bearer " + localStorage.getItem("token"),
-      },
-    }).then((response) => {
-      // console.log(response.data&&response.data[0].id);
-      setlistProject(response.data);
-    });
-  }, []);
 
   useEffect(() => {
     setFilteredData(
@@ -45,7 +43,7 @@ const Projects = () => {
   };
   console.log("currentPosts: ", currentPosts);
   return (
-    <div>
+    <div className="container container-xs">
       <Sidenav />
       <div className="container container-xs">
         <div className="row header">
@@ -99,15 +97,21 @@ const Projects = () => {
           {filteredData.length === 0 ? (
             <div className="no_result">No result found!</div>
           ) : (
-            // currentPosts.map((arr, index) => {
-            //   if (index % 2 === 0) {
-            //     return <EmployeeInfo key={arr.id} employee={arr} />;
-            //   } else {
-            //     return <EmployeeInfoEven key={arr.id} employee={arr} />;
-            //   }
-            // })
-            currentPosts.map((val) => {
-              return <div key={val.id}>{val.project_name}</div>;
+            currentPosts.map((arr, index) => {
+              if (index % 2 === 0) {
+                return (
+                  <ProjectInfo
+                    key={arr.id}
+                    project={arr}
+                    projects={listProject}
+                    employee={listEmployee}
+                    employeeProject={employeeProjectRole}
+                    setEmployeeProject = {setEmployeeProjectRole}
+                  />
+                );
+              } else {
+                return "hahahahahahahah";
+              }
             })
           )}
         </div>

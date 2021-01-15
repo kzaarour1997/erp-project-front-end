@@ -6,6 +6,8 @@ import Sidenav from "../SideNav/Sidenav";
 import Pagination from "../Pagination/Pagination";
 import AddTeam from "./AddTeamModal";
 import TeamInfoEven from "./TeamInfoEven";
+import { useContext } from "react";
+import dataContext from "../Context/Context";
 
 const Teams = () => {
   const [filteredData, setFilteredData] = useState([]);
@@ -14,20 +16,9 @@ const Teams = () => {
   const [postsPerPage, setPostsPerPage] = useState(6);
   const [render, setRender] = useState(false);
 
-  const [listTeam, setListTeam] = useState([]);
+  const { listTeam, setListTeam } = useContext(dataContext);
 
   const numOfTeams = listTeam.length;
-
-  useEffect(() => {
-    Axios.get("http://localhost:8000/api/team", {
-      headers: {
-        "content-type": "multipart/form-data",
-        Authorization: "Bearer " + localStorage.getItem("token"),
-      },
-    }).then((response) => {
-      setListTeam(response.data);
-    });
-  }, [render]);
 
   useEffect(() => {
     setFilteredData(

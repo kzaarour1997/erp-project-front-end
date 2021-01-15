@@ -8,28 +8,18 @@ import EmployeeInfo from "./EmployeeInfo";
 import AddEmployee from "./AddEmployeeModal";
 import EmployeeInfoEven from "./EmployeeInfoEven";
 
+import dataContext from "../Context/Context";
+import { useContext } from "react";
+
 const Employees = () => {
   const [filteredData, setFilteredData] = useState([]);
   const [search, setSearch] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage, setPostsPerPage] = useState(6);
 
-  const [listEmployee, setListEmployee] = useState([]);
+  const { listEmployee, setListEmployee } = useContext(dataContext);
 
   const numOfEmployees = listEmployee.length;
-
-
-  useEffect(() => {
-    Axios.get("http://localhost:8000/api/employee", {
-      headers: {
-        "content-type": "multipart/form-data",
-        Authorization: "Bearer " + localStorage.getItem("token"),
-      },
-    }).then((response) => {
-      setListEmployee(response.data);
-      // console.log(response.data[0].created_at);
-    });
-  }, []);
 
   useEffect(() => {
     setFilteredData(
