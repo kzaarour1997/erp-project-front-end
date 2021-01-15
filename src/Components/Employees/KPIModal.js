@@ -15,9 +15,7 @@ const KPIModal = (props) => {
   const [name, setName] = useState("");
   const [kpiValue, setKpiValue] = useState(1);
 
-
-  
-  const [kpi , setKpi] = useState(props.modalKpi.kpis);
+  const [kpi, setKpi] = useState(props.modalKpi.kpis);
 
   const creatKpi = async (e) => {
     e.preventDefault();
@@ -78,8 +76,8 @@ const KPIModal = (props) => {
       {kpi.map((val) => {
         return (
           <div>
-            <Chart value = {val.value} name = {val.name}/>
-            </div>
+            <Chart value={val.value} name={val.name} />
+          </div>
         );
       })}
       <button

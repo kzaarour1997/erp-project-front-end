@@ -71,9 +71,9 @@ const AssignToModal = (props) => {
         }}
         className="View_close_btn"
         style={{
-            position: "relative",
-            left: "14vw",
-            top: "30vw"
+          position: "relative",
+          left: "14vw",
+          top: "30vw",
         }}
       >
         Close

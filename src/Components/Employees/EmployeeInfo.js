@@ -6,7 +6,7 @@ import ViewEmployee from "./ViewEmployee";
 import AssignTo from "./AssignTo";
 
 const EmployeeInfo = (props) => {
-  console.log(props);
+  console.log(props.employee.firstname);
   return (
     <div className="row background" key={props.employee.id}>
       <div className="info">

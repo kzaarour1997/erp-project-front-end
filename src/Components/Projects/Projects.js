@@ -1,36 +1,38 @@
-import Axios from "axios";
 import React from "react";
+import Axios from "axios";
 import { useState, useEffect } from "react";
-import { Redirect } from "react-router-dom";
 import Sidenav from "../SideNav/Sidenav";
 import Pagination from "../Pagination/Pagination";
-import EmployeeInfo from "./EmployeeInfo";
-import AddEmployee from "./AddEmployeeModal";
-import EmployeeInfoEven from "./EmployeeInfoEven";
-
-import dataContext from "../Context/Context";
+import AddProjects from "./AddProjects";
 import { useContext } from "react";
+import { dataContext } from "../Context/Context";
+import ProjectInfo from "./ProjectInfo";
 
-const Employees = () => {
+const Projects = () => {
   const [filteredData, setFilteredData] = useState([]);
   const [search, setSearch] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage, setPostsPerPage] = useState(6);
 
-  const { listEmployee, setListEmployee } = useContext(dataContext);
+  const { listProject, setListProject } = useContext(dataContext);
+  // console.log(listProject);
 
-  const numOfEmployees = listEmployee.length;
+  const { listEmployee, setListEmployee } = useContext(dataContext);
+  // console.log(listEmployee)
+
+  const {employeeProjectRole,setEmployeeProjectRole} = useContext(dataContext);
+
+  // console.log(employeeProjectRole);
+
+  const numOfProjects = listProject.length;
 
   useEffect(() => {
     setFilteredData(
-      listEmployee.filter(
-        (employee) =>
-          employee.firstname.toLowerCase().includes(search.toLowerCase()) ||
-          employee.lastname.toLowerCase().includes(search.toLowerCase()) ||
-          employee.email.toLowerCase().includes(search.toLowerCase())
+      listProject.filter((project) =>
+        project.project_name.toLowerCase().includes(search.toLowerCase())
       )
     );
-  }, [search, listEmployee]);
+  }, [search, listProject]);
 
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
@@ -40,11 +42,10 @@ const Employees = () => {
     setCurrentPage(pageNumber);
   };
   console.log("currentPosts: ", currentPosts);
-
   return (
     <div className="container container-xs">
       <Sidenav />
-      <div className="container">
+      <div className="container container-xs">
         <div className="row header">
           <div className="col-md-2 col-sm-2">
             <button
@@ -54,14 +55,14 @@ const Employees = () => {
               data-toggle="modal"
               data-target="#myModal"
             >
-              Add Employee
+              Add Projects
             </button>
           </div>
           <div className="col-md-8 col-sm-6">
             <form className="search">
               <input
                 value={search}
-                placeholder="Find Employees..."
+                placeholder="Find Project..."
                 type="text"
                 name=""
                 className="search__field"
@@ -87,9 +88,9 @@ const Employees = () => {
           </div>
         </div>
         <h1>
-          Number of Employees is{"  "}
+          Number of Projects is{"  "}
           <span className="badge">
-            <span className="badge-secondary">{numOfEmployees}</span>
+            <span className="badge-secondary">{numOfProjects}</span>
           </span>
         </h1>
         <div className="sections">
@@ -98,14 +99,23 @@ const Employees = () => {
           ) : (
             currentPosts.map((arr, index) => {
               if (index % 2 === 0) {
-                return <EmployeeInfo key={arr.id} employee={arr} />;
+                return (
+                  <ProjectInfo
+                    key={arr.id}
+                    project={arr}
+                    projects={listProject}
+                    employee={listEmployee}
+                    employeeProject={employeeProjectRole}
+                    setEmployeeProject = {setEmployeeProjectRole}
+                  />
+                );
               } else {
-                return <EmployeeInfoEven key={arr.id} employee={arr} />;
+                return "hahahahahahahah";
               }
             })
           )}
         </div>
-        <AddEmployee />
+        <AddProjects />
       </div>
       <div className="row">
         <div className="col-md-3"></div>
@@ -122,4 +132,4 @@ const Employees = () => {
   );
 };
 
-export default Employees;
+export default Projects;

@@ -8,52 +8,34 @@ import AddAdmin from "./AddAdminModal";
 import AdminInfo from "./AdminInfo";
 import AdminInfoEven from "./AdminInfoEven";
 
+import {dataContext} from "../Context/Context";
+import {useContext} from "react";
+
+
+
 const Admins = () => {
   const [search, setSearch] = useState("");
   const [filteredData, setFilteredData] = useState([]);
-  const [users, setUsers] = useState([]);
+
+  const {users, setUsers} = useContext(dataContext);
   const [render, setRender] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage, setPostsPerPage] = useState(6);
+  
+  const {name , setName} = useContext(dataContext);
+  // console.log(name);
 
   const numOfAdmins = users.length;
 
-  useEffect(() => {
-    Axios.get("http://localhost:8000/api/users", {
-      headers: {
-        "content-type": "multipart/form-data",
-        Authorization: "Bearer " + localStorage.getItem("token"),
-      },
-    }).then((response) => {
-      setUsers(response.data);
-    });
-  }, [render]);
 
   useEffect(() => {
     setFilteredData(
       users.filter(
         (user) =>
-          user.firstname.toLowerCase().includes(search.toLowerCase()) ||
-          user.lastname.toLowerCase().includes(search.toLowerCase()) ||
-          user.email.toLowerCase().includes(search.toLowerCase())
+          user.firstname.toLowerCase().includes(search.toLowerCase())
       )
     );
   }, [search, users, render]);
-
-  // useEffect(() => {
-  //   localStorage.getItem("image");
-  //   console.log(localStorage.getItem("image"));
-  // }, []);
-
-  // useEffect(() => {
-  //   localStorage.getItem("id");
-  //   console.log(localStorage.getItem("id"));
-  // }, []);
-
-  // useEffect(() => {
-  //   localStorage.getItem("username");
-  //   console.log(localStorage.getItem("username"));
-  // }, []);
 
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;

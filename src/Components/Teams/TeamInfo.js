@@ -4,6 +4,8 @@ import DeleteTeam from "./DeleteTeam";
 
 const TeamInfo = (props) => {
   console.log(props);
+  
+
   return (
     <div className="row background" key={props.team.id}>
       <div className="info">
@@ -37,7 +39,7 @@ const TeamInfo = (props) => {
         </div>
         <div style={{ position: "relative", left: "29.2vw" }}>
           <ViewTeam viewTeam={props.team} />
-          <DeleteTeam deleteTeam={props.team} />
+          <DeleteTeam deleteTeam={props.team} errorMsg={props.errorMsg}/>
         </div>
       </div>
     </div>
