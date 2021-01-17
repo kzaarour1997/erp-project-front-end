@@ -62,6 +62,7 @@ const AssignToModal = (props) => {
         }).then((response) => {
           console.log(response.data);
           localStorage.getItem("token");
+          alert("Successfully Assigned A Project To A Team!!!");
         });
       });
     } catch (error) {
@@ -110,6 +111,7 @@ const AssignToModal = (props) => {
           ).then((response) => {
             console.log(response.data);
             localStorage.getItem("token");
+            alert("Successfully Assigned A Project To A Employee!!!");
           });
         }
       });
