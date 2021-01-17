@@ -6,7 +6,11 @@ import ViewEmployee from "./ViewEmployee";
 import AssignTo from "./AssignTo";
 
 const EmployeeInfo = (props) => {
-  console.log(props.employee.firstname);
+  // console.log(props.employee.firstname);
+  // console.log(props.employee)
+  const { setRender } = props.render;
+  // console.log({setRender});
+  // console.log(props.listTeams);
   return (
     <div className="row background" key={props.employee.id}>
       <div className="info">
@@ -40,10 +44,10 @@ const EmployeeInfo = (props) => {
         </div>
         <div style={{ position: "relative", left: "9.4vw" }}>
           <ViewEmployee viewEmp={props.employee} />
-          <AssignTo assignTo = {props.employee}/>
-          <UpdateEmployee updateEmployee={props.employee} />
-          <KPI kpiEmployee={props.employee} />
-          <DeleteEmployee deleteEmployee={props.employee} />
+          <AssignTo assignTo = {props.employee} teams = {props.listTeams} render = {{setRender}}/>
+          <UpdateEmployee updateEmployee={props.employee} render = {{setRender}}/>
+          <KPI kpiEmployee={props.employee} render = {{setRender}}/>
+          <DeleteEmployee deleteEmployee={props.employee} render = {{setRender}}/>
         </div>
       </div>
     </div>

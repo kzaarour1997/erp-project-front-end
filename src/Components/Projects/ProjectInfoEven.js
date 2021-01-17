@@ -1,25 +1,23 @@
 import React from "react";
 import ViewProject from "./ViewProject";
 import AssignEmployee from "./AssignEmployee";
-import DeleteProject from "./DeleteProject";
+import DeleteProject from "./DeleteProjectEven";
 
-const ProjectInfo = (props) => {
-  // console.log(props.role)
-  // console.log(props.listTeam)
-
-  const { setRender } = props.render;
-  // console.log({setRender})
-  
-
+const ProjectInfoEven = (props) => {
+  const {setRender} = props.render;
   return (
-    <div className="row background" key={props.project.id}>
+    <div
+      className="row background"
+      key={props.project.id}
+      style={{ transform: "skewX(18deg)", border: "1px #bf3c41 solid" }}
+    >
       <div className="info">
         <div className="col-md-1" style={{}}></div>
         <div className="col-md-5">
           <p
             style={{
               color: "white",
-              transform: "skewX(20deg)",
+              transform: "skewX(-20deg)",
               fontSize: "14px",
               margin: "24px 0",
               position: "relative",
@@ -31,7 +29,13 @@ const ProjectInfo = (props) => {
             {props.project.project_name}
           </p>
         </div>
-        <div style={{ position: "relative", left: "18.4vw" }}>
+        <div
+          style={{
+            position: "relative",
+            left: "20vw",
+            transform: "skewX(-34deg)",
+          }}
+        >
           <ViewProject project={props.proj}/>
           <AssignEmployee
             employee={props.employee}
@@ -41,11 +45,11 @@ const ProjectInfo = (props) => {
             listRole={props.role}
             team={props.listTeam}
           />
-          <DeleteProject project={props.project} rendering={{ setRender }} />
+        <DeleteProject  project = {props.project}  rendering={{setRender}} />
         </div>
       </div>
     </div>
   );
 };
 
-export default ProjectInfo;
+export default ProjectInfoEven;

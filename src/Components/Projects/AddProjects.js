@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import Axios from "axios";
 
-const AddProjects = () => {
+const AddProjects = (props) => {
   const [projectName, setProjectName] = useState("");
   const [description, setDescription] = useState("");
 
@@ -10,6 +10,9 @@ const AddProjects = () => {
 
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage, setPostsPerPage] = useState(6);
+
+  const { setRender } = props.render;
+  // console.log(setRender)
 
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -30,6 +33,8 @@ const AddProjects = () => {
       }).then((response) => {
         console.log(response.data);
         localStorage.getItem("token");
+        alert("Successfully Created A New Project!!!!");
+        setRender((prev) => !prev);
       });
     } catch (error) {
       console.log(error);

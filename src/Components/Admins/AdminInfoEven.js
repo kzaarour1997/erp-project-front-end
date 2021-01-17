@@ -4,6 +4,8 @@ import UpdateAdmin from "./UpdateAdmin";
 import DeleteAdmin from "./DeleteAdminEven";
 
 const AdminInfoEven = (props) => {
+  const { setRender } = props.render;
+  // console.log({setRender});
   return (
     <div>
       <div
@@ -50,8 +52,8 @@ const AdminInfoEven = (props) => {
             }}
           >
             <ViewAdmin viewAdm={props.admin} />
-            <UpdateAdmin updateAdmin={props.admin} />
-            <DeleteAdmin deleteAdmin={props.admin} />
+            <UpdateAdmin updateAdmin={props.admin} rendering = {{setRender}}/>
+            <DeleteAdmin deleteAdmin={props.admin} rendering = {{setRender}} />
           </div>
         </div>
       </div>

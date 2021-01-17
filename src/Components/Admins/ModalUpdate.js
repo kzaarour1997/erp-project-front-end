@@ -1,44 +1,51 @@
-import {useDialog } from "react-st-modal";
+import { useDialog } from "react-st-modal";
 import { useState } from "react";
 import { Redirect } from "react-router-dom";
 import Axios from "axios";
 
 // The element to be shown in the modal window
 function ModalUpdate(props) {
+  const { setRender } = props.rendering;
+  console.log({ setRender });
+
   // use this hook to control the dialog
   const dialog = useDialog();
   const [value, setValue] = useState();
 
-  const [newfirstName, setNewfirstName] = useState("");
-  const [newLastName, setNewLastName] = useState("");
-  const [newEmail, setNewEmail] = useState("");
-  const [newImage, setNewImage] = useState("");
+  const [newfirstName, setNewfirstName] = useState(props.updateinfo.firstname);
+  const [newLastName, setNewLastName] = useState(props.updateinfo.lastname);
+  const [newEmail, setNewEmail] = useState(props.updateinfo.email);
+  const [newImage, setNewImage] = useState(null);
+
+  console.log(props.updateinfo.image);
 
 
   const updateInfo = async (id) => {
-      const data = new FormData();
-      data.append("firstname", newfirstName);
-      data.append("lastname", newLastName);
-      data.append("email", newEmail);
-      data.append("image", newImage);
+    const data = new FormData();
+    data.append("firstname", newfirstName);
+    data.append("lastname", newLastName);
+    data.append("email", newEmail);
+    data.append("image", newImage);
 
-      try {
-        await Axios.post(
-          `http://localhost:8000/api/users/${props.updateinfo.id}?_method=PUT `,
-          data,
-          {
-            headers: {
-              "content-type": "multipart/form-data",
-              Authorization: "Bearer " + localStorage.getItem("token"),
-            },
-          }
-        ).then((response) => {
-          console.log(response);
-        });
-      } catch (err) {
-        console.log(err);
-      }
-    
+    try {
+      await Axios.post(
+        `http://localhost:8000/api/users/${props.updateinfo.id}?_method=PUT `,
+        data,
+        {
+          headers: {
+            "content-type": "multipart/form-data",
+            Authorization: "Bearer " + localStorage.getItem("token"),
+          },
+        }
+      ).then((response) => {
+        console.log(response);
+        alert("Successfully Updated!!");
+        setRender((prev) => !prev);
+      });
+    } catch (err) {
+      console.log(err);
+    }
+
     if (!localStorage.getItem("token")) {
       return <Redirect to="/" />;
     }
@@ -47,39 +54,42 @@ function ModalUpdate(props) {
   return (
     <div
       className="col-md-12"
-      style = {{
+      style={{
         position: "relative",
         left: "8.4vw",
-        marginTop:"15px",
-        top : "1vw"
-    }}
+        marginTop: "15px",
+        top: "1vw",
+      }}
     >
       <label className="updateLabel">FirstName</label>
       <input
         type="text"
         className="form-control"
-        placeholder="Enter New FirstName ..."
+        // placeholder="Enter New FirstName ..."
         onChange={(e) => {
           setNewfirstName(e.target.value);
         }}
+        value={newfirstName}
       />
       <label className="updateLabel">LastName</label>
       <input
         type="text"
         className="form-control"
-        placeholder="Enter New LastName ..."
+        // placeholder="Enter New LastName ..."
         onChange={(e) => {
           setNewLastName(e.target.value);
         }}
+        value={newLastName}
       />
       <label className="updateLabel">Email</label>
       <input
         type="text"
         className="form-control"
-        placeholder="Enter New Email ..."
+        // placeholder="Enter New Email ..."
         onChange={(e) => {
           setNewEmail(e.target.value);
         }}
+        value={newEmail}
       />
       <label className="updateLabel">Image</label>
       <input
@@ -116,9 +126,3 @@ function ModalUpdate(props) {
 }
 
 export default ModalUpdate;
-
-
-
-
-
-

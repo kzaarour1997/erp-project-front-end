@@ -3,7 +3,9 @@ import { CustomDialog } from "react-st-modal";
 import KPIModal from "./KPIModal";
 
 const KPI = (props) => {
-  console.log(props.kpiEmployee);
+  // console.log(props.kpiEmployee);
+  const setRender = props.render;
+  // console.log({setRender})
   return (
     <div
       className="col-md-1"
@@ -16,7 +18,7 @@ const KPI = (props) => {
       <button
         onClick={async () => {
           const result = await CustomDialog(
-            <KPIModal modalKpi={props.kpiEmployee} />,
+            <KPIModal modalKpi={props.kpiEmployee} render ={setRender}/>,
             {
               title: "KPI lists",
               showCloseIcon: true,

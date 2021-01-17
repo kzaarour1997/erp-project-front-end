@@ -8,34 +8,42 @@ import AddAdmin from "./AddAdminModal";
 import AdminInfo from "./AdminInfo";
 import AdminInfoEven from "./AdminInfoEven";
 
-import {dataContext} from "../Context/Context";
-import {useContext} from "react";
-
 
 
 const Admins = () => {
   const [search, setSearch] = useState("");
   const [filteredData, setFilteredData] = useState([]);
 
-  const {users, setUsers} = useContext(dataContext);
+  //to refresh the page on click
   const [render, setRender] = useState(false);
+
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage, setPostsPerPage] = useState(6);
-  
-  const {name , setName} = useContext(dataContext);
-  // console.log(name);
 
+  const [users, setUsers] = useState([]);
   const numOfAdmins = users.length;
 
+  //Set state render inside useEffect for refresh
+
+  useEffect(() => {
+    Axios.get("http://localhost:8000/api/users", {
+      headers: {
+        "content-type": "multipart/form-data",
+        Authorization: "Bearer " + localStorage.getItem("token"),
+      },
+    }).then((response) => {
+      setUsers(response.data);
+    });
+  }, [render]);
 
   useEffect(() => {
     setFilteredData(
-      users.filter(
-        (user) =>
-          user.firstname.toLowerCase().includes(search.toLowerCase())
+      users.filter((user) =>
+        user.firstname.toLowerCase().includes(search.toLowerCase())
       )
     );
   }, [search, users, render]);
+  
 
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
@@ -44,12 +52,12 @@ const Admins = () => {
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
+
   console.log("currentPosts: ", currentPosts);
 
   return (
     <div className="container container-xs">
       <Sidenav />
-
       <div className="container">
         <div className="row header">
           <div className="col-md-2 col-sm-2">
@@ -96,21 +104,29 @@ const Admins = () => {
           Number of Admins is{"  "}
           <span className="badge badge-secondary">{numOfAdmins}</span>
         </h1>
-
         <div className="sections">
           {filteredData.length === 0 ? (
             <div className="no_result">No result found!</div>
           ) : (
             currentPosts.map((arr, index) => {
               if (index % 2 === 0) {
-                return <AdminInfo key={arr.id} admin={arr} />;
+                // render={{setRender}} for refresh
+                return (
+                  <AdminInfo key={arr.id} admin={arr} render={{ setRender }} />
+                );
               } else {
-                return <AdminInfoEven key={arr.id} admin={arr} />;
+                return (
+                  <AdminInfoEven
+                    key={arr.id}
+                    admin={arr}
+                    render={{ setRender }}
+                  />
+                );
               }
             })
           )}
         </div>
-        <AddAdmin props={{ setRender }} />
+        <AddAdmin render={{ setRender }} />
         <div className="row">
           <div className="col-md-3"></div>
           <div className="col-md-6" style={{ textAlign: "center" }}>

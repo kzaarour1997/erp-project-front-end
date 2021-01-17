@@ -6,7 +6,6 @@ import React from "react";
 const ViewModal = (props) => {
   // use this hook to control the dialog
   // console.log(props.employee&&props.employee.teams.name);
-
   const dialog = useDialog();
   const [value, setValue] = useState();
   return (
@@ -54,12 +53,25 @@ const ViewModal = (props) => {
         </span>
         <br />
         <span>
-          <strong>
-            {props.employee &&
-              props.employee.teams &&
-              props.employee.teams.name}
-          </strong>
+          <strong>Team Name :</strong>
+          <br />
+          {props.employee && props.employee.teams && props.employee.teams.name}
         </span>
+        <br />
+        <span>
+          <strong>Role :</strong>
+        </span>
+        {/* {props.employee&&props.employee.projects&&props.employee.projects.roles.name} */}
+        {props.employee &&
+          props.employee.projects.map((val) => {
+            return (
+              <div>
+                {val.roles.map((i) => {
+                  return <p key={i}>{i.name}</p>;
+                })}
+              </div>
+            );
+          })}
       </p>
       <button
         onClick={() => {

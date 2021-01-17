@@ -9,37 +9,21 @@ const Chart = (props) => {
 
   const data = [
     {
+      from: 1,
+      value: 1,
+    },
+    {
+      from: 2,
+      value: 3,
+    },
+    {
+      from: props.date,
+      value: 4,
+    },
+    {
       from: props.date,
       value: props.value,
     },
-    // {
-    //   from: "2019-05-21",
-    //   to: "2019-05-21",
-    //   bookings: 50,
-    //   revenue: 129800,
-    //   costs: 14400,
-    // },
-    // {
-    //   from: "2019-05-22",
-    //   to: "2019-05-22",
-    //   bookings: 80,
-    //   revenue: 120000,
-    //   costs: 14400,
-    // },
-    // {
-    //   from: "2019-05-23",
-    //   to: "2019-05-23",
-    //   bookings: 30,
-    //   revenue: 120000,
-    //   costs: 14400,
-    // },
-    // {
-    //   from: "2019-05-24",
-    //   to: "2019-05-24",
-    //   bookings: 50,
-    //   revenue: 120000,
-    //   costs: 14400,
-    // },
   ];
 
   //Need to add active color for chosen category

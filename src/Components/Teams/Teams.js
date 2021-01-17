@@ -1,12 +1,11 @@
 import Axios from "axios";
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import TeamInfo from "./TeamInfo";
 import Sidenav from "../SideNav/Sidenav";
 import Pagination from "../Pagination/Pagination";
 import AddTeam from "./AddTeamModal";
 import TeamInfoEven from "./TeamInfoEven";
-import { useContext } from "react";
 import dataContext from "../Context/Context";
 
 const Teams = () => {
@@ -14,9 +13,8 @@ const Teams = () => {
   const [search, setSearch] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage, setPostsPerPage] = useState(6);
-  const [render, setRender] = useState(false);
 
-  const { listTeam, setListTeam } = useContext(dataContext);
+  const { listTeam, setListTeam, render, setRender } = useContext(dataContext);
 
   const numOfTeams = listTeam.length;
 
@@ -26,7 +24,7 @@ const Teams = () => {
         team.name.toLowerCase().includes(search.toLowerCase())
       )
     );
-  }, [search, listTeam]);
+  }, [search, listTeam, render]);
 
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
@@ -94,14 +92,22 @@ const Teams = () => {
           ) : (
             currentPosts.map((arr, index) => {
               if (index % 2 === 0) {
-                return <TeamInfo key={arr.id} team={arr} />;
+                return (
+                  <TeamInfo key={arr.id} team={arr} render={{ setRender }} />
+                );
               } else {
-                return <TeamInfoEven key={arr.id} team={arr} />;
+                return (
+                  <TeamInfoEven
+                    key={arr.id}
+                    team={arr}
+                    render={{ setRender }}
+                  />
+                );
               }
             })
           )}
         </div>
-        <AddTeam props={{ setRender }} />
+        <AddTeam render={{ setRender }} />
       </div>
       <div className="row">
         <div className="col-md-3"></div>

@@ -7,6 +7,9 @@ const DeleteTeam = (props) => {
   const [deleteList, setDeleteList] = useState(props.deleteTeam.employees);
   const [deleteItemErr, setDeleteItemErr] = useState("");
 
+  const {setRender} = props.render ;
+  // console.log({setRender})
+
   const deleteItem = async (id) => {
     try {
       await Axios.delete(`http://localhost:8000/api/team/${id} `, {
@@ -18,10 +21,8 @@ const DeleteTeam = (props) => {
       }).then((data) => {
         if (data.status === 200) {
           console.log(data);
-          alert("Deleted!");
-          // const newData = team.filter((item) => item.id !== id);
-          // console.log(props.deleteTeam&&props.deleteTeam.employees);
-          // setteam(newData);
+          alert('Successfully Deleted!!')
+          setRender(prev => !prev);
         }
       });
     } catch (err) {

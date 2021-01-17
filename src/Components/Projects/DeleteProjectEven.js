@@ -2,24 +2,25 @@ import React from "react";
 import Axios from "axios";
 import { useState } from "react";
 
-const DeleteEmployeeEven = (props) => {
-  
-  const {setRender} = props.render ;
-  // console.log({setRender})
-
+const DeleteProjectEven = (props) => {
+  const { setRender } = props.rendering;
+  //   console.log({setRender})
   const deleteItem = async (id) => {
     try {
-      await Axios.delete(`http://localhost:8000/api/employee/${id} `, {
-        headers: {
-          Accept: "application/json",
-          "content-type": "multipart/form-data",
-          Authorization: "Bearer " + localStorage.getItem("token"),
-        },
-      }).then((data) => {
+      await Axios.delete(
+        `http://localhost:8000/api/project/${props.project.id} `,
+        {
+          headers: {
+            Accept: "application/json",
+            "content-type": "multipart/form-data",
+            Authorization: "Bearer " + localStorage.getItem("token"),
+          },
+        }
+      ).then((data) => {
         if (data.status === 200) {
           console.log(data);
           alert("Successfully Deleted!");
-          setRender(prev => !prev);
+          setRender((prev) => !prev);
         }
       });
     } catch (err) {
@@ -35,7 +36,7 @@ const DeleteEmployeeEven = (props) => {
         className="Button Button_delete_Even Button_delete_Skew_Even"
         id="change"
         onClick={() => {
-          deleteItem(props.deleteEmployee.id);
+          deleteItem(props.project.id);
         }}
       >
         <span> Delete</span>
@@ -44,4 +45,4 @@ const DeleteEmployeeEven = (props) => {
   );
 };
 
-export default DeleteEmployeeEven;
+export default DeleteProjectEven;

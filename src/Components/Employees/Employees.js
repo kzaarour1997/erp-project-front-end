@@ -8,7 +8,7 @@ import EmployeeInfo from "./EmployeeInfo";
 import AddEmployee from "./AddEmployeeModal";
 import EmployeeInfoEven from "./EmployeeInfoEven";
 
-import dataContext from "../Context/Context";
+import { dataContext } from "../Context/Context";
 import { useContext } from "react";
 
 const Employees = () => {
@@ -17,7 +17,17 @@ const Employees = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage, setPostsPerPage] = useState(6);
 
-  const { listEmployee, setListEmployee } = useContext(dataContext);
+  //to refresh the page on click
+  // const [render, setRender] = useState(false);
+
+  const { listEmployee, setListEmployee, render, setRender } = useContext(
+    dataContext
+  );
+  console.log(listEmployee)
+
+
+  const { listTeam, setListTeam } = useContext(dataContext);
+  // console.log(listTeam);
 
   const numOfEmployees = listEmployee.length;
 
@@ -30,7 +40,8 @@ const Employees = () => {
           employee.email.toLowerCase().includes(search.toLowerCase())
       )
     );
-  }, [search, listEmployee]);
+  }, [search, listEmployee, render]);
+  
 
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
@@ -98,14 +109,29 @@ const Employees = () => {
           ) : (
             currentPosts.map((arr, index) => {
               if (index % 2 === 0) {
-                return <EmployeeInfo key={arr.id} employee={arr} />;
+                return (
+                  <EmployeeInfo
+                    key={arr.id}
+                    employee={arr}
+                    listTeams={listTeam}
+                    render={{ setRender }}
+                    emplo = {arr.projects}
+                  />
+                );
               } else {
-                return <EmployeeInfoEven key={arr.id} employee={arr} />;
+                return (
+                  <EmployeeInfoEven
+                    key={arr.id}
+                    employee={arr}
+                    listTeams={listTeam}
+                    render={{ setRender }}
+                  />
+                );
               }
             })
           )}
         </div>
-        <AddEmployee />
+        <AddEmployee render={{ setRender }} />
       </div>
       <div className="row">
         <div className="col-md-3"></div>

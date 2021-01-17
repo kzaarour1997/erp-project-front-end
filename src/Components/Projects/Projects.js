@@ -7,6 +7,7 @@ import AddProjects from "./AddProjects";
 import { useContext } from "react";
 import { dataContext } from "../Context/Context";
 import ProjectInfo from "./ProjectInfo";
+import ProjectInfoEven from "./ProjectInfoEven";
 
 const Projects = () => {
   const [filteredData, setFilteredData] = useState([]);
@@ -14,15 +15,24 @@ const Projects = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage, setPostsPerPage] = useState(6);
 
-  const { listProject, setListProject } = useContext(dataContext);
-  // console.log(listProject);
+  
+  const { listProject, setListProject, render, setRender } = useContext(
+    dataContext
+  );
+  console.log(listProject);
 
   const { listEmployee, setListEmployee } = useContext(dataContext);
   // console.log(listEmployee)
 
-  const {employeeProjectRole,setEmployeeProjectRole} = useContext(dataContext);
+  const { employeeProjectRole, setEmployeeProjectRole } = useContext(
+    dataContext
+  );
 
-  // console.log(employeeProjectRole);
+  const { role, setRole } = useContext(dataContext);
+  // console.log(role);
+
+  const { listTeam, setListTeam } = useContext(dataContext);
+  // console.log(listTeam)
 
   const numOfProjects = listProject.length;
 
@@ -32,7 +42,7 @@ const Projects = () => {
         project.project_name.toLowerCase().includes(search.toLowerCase())
       )
     );
-  }, [search, listProject]);
+  }, [search, listProject, render]);
 
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
@@ -102,20 +112,39 @@ const Projects = () => {
                 return (
                   <ProjectInfo
                     key={arr.id}
+                    projId={arr.id}
                     project={arr}
                     projects={listProject}
                     employee={listEmployee}
                     employeeProject={employeeProjectRole}
-                    setEmployeeProject = {setEmployeeProjectRole}
+                    setEmployeeProject={setEmployeeProjectRole}
+                    render={{ setRender }}
+                    role={role}
+                    listTeam={listTeam}
+                    proj={arr}
                   />
                 );
               } else {
-                return "hahahahahahahah";
+                return (
+                  <ProjectInfoEven
+                    key={arr.id}
+                    projId={arr.id}
+                    project={arr}
+                    projects={listProject}
+                    employee={listEmployee}
+                    employeeProject={employeeProjectRole}
+                    setEmployeeProject={setEmployeeProjectRole}
+                    render={{ setRender }}
+                    role={role}
+                    listTeam={listTeam}
+                    proj={arr}
+                  />
+                );
               }
             })
           )}
         </div>
-        <AddProjects />
+        <AddProjects render={{ setRender }} />
       </div>
       <div className="row">
         <div className="col-md-3"></div>
