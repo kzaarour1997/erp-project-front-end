@@ -8,12 +8,15 @@ function ModalUpdate(props) {
   const dialog = useDialog();
   const [value, setValue] = useState();
 
-  const [newIdentity, setNewIdentity] = useState("");
-  const [newFirstName, setNewFirstName] = useState("");
-  const [newLastName, setNewLastName] = useState("");
+  const { setRender } = props.render;
+  // console.log({ setRender });
+
+  const [newIdentity, setNewIdentity] = useState(props.updateinfo.identity);
+  const [newFirstName, setNewFirstName] = useState(props.updateinfo.firstname);
+  const [newLastName, setNewLastName] = useState(props.updateinfo.lastname);
   const [newImage, setNewImage] = useState(null);
-  const [newPhone, setNewPhone] = useState("");
-  const [newEmail, setNewEmail] = useState("");
+  const [newPhone, setNewPhone] = useState(props.updateinfo.phone);
+  const [newEmail, setNewEmail] = useState(props.updateinfo.email);
 
   const updateInfo = async (id) => {
     const data = new FormData();
@@ -36,7 +39,8 @@ function ModalUpdate(props) {
         }
       ).then((response) => {
         console.log(response);
-        //setSuccessUpdate("Data has been updated");
+        alert("Successfully Updated!!");
+        setRender((prev) => !prev);
       });
     } catch (err) {
       console.log(err);
@@ -61,6 +65,7 @@ function ModalUpdate(props) {
           setNewIdentity(e.target.value);
           console.log(setNewIdentity(e.target.value));
         }}
+        value={newIdentity}
       />
       <label className="updateLabel">Firstname</label>
       <input
@@ -70,6 +75,7 @@ function ModalUpdate(props) {
         onChange={(e) => {
           setNewFirstName(e.target.value);
         }}
+        value={newFirstName}
       />
       <label className="updateLabel">Lastname</label>
       <input
@@ -79,6 +85,7 @@ function ModalUpdate(props) {
         onChange={(e) => {
           setNewLastName(e.target.value);
         }}
+        value={newLastName}
       />
       <label className="updateLabel">Email</label>
       <input
@@ -88,6 +95,7 @@ function ModalUpdate(props) {
         onChange={(e) => {
           setNewEmail(e.target.value);
         }}
+        value={newEmail}
       />
       <label className="updateLabel">Image</label>
       <input
@@ -111,6 +119,7 @@ function ModalUpdate(props) {
         onChange={(e) => {
           setNewPhone(e.target.value);
         }}
+        value={newPhone}
       />
       <button
         id="change1"

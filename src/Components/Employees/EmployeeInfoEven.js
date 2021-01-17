@@ -7,6 +7,10 @@ import AssignTo from "./AssignTo";
 
 const EmployeeInfoEven = (props) => {
   // console.log(props);
+  const { setRender } = props.render;
+  // console.log({setRender});
+// console.log(props.listTeam )
+
   return (
     <div
       className="row background"
@@ -52,10 +56,17 @@ const EmployeeInfoEven = (props) => {
           }}
         >
           <ViewEmployee viewEmp={props.employee} />
-          <AssignTo assignTo={props.employee} />
-          <UpdateEmployee updateEmployee={props.employee} />
-          <KPI kpiEmployee={props.employee} />
-          <DeleteEmployeeEven deleteEmployee={props.employee} />
+          <AssignTo assignTo={props.employee} teams = {props.listTeams} render = {{setRender}}/>
+          <UpdateEmployee
+            updateEmployee={props.employee}
+            render={{ setRender }}
+            teams = {props.listTeams}
+          />
+          <KPI kpiEmployee={props.employee} render={{ setRender }} />
+          <DeleteEmployeeEven
+            deleteEmployee={props.employee}
+            render={{ setRender }}
+          />
         </div>
       </div>
     </div>

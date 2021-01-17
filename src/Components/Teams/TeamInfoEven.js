@@ -3,6 +3,8 @@ import DeleteTeam from "./DeleteTeamEven";
 import ViewTeam from "./ViewTeam";
 
 const TeamInfoEven = (props) => {
+  const { setRender } = props.render;
+  // console.log({setRender});
   return (
     <div>
       <div
@@ -49,7 +51,7 @@ const TeamInfoEven = (props) => {
             }}
           >
             <ViewTeam viewTeam={props.team} />
-            <DeleteTeam deleteTeam={props.team} />
+            <DeleteTeam deleteTeam={props.team} render={{ setRender }} />
           </div>
         </div>
       </div>

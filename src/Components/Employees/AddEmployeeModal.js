@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import Axios from "axios";
 
 const AddEmployeeModal = (props) => {
+  const { setRender } = props.render;
+  console.log({setRender})
   // console.log(props);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -11,6 +13,7 @@ const AddEmployeeModal = (props) => {
   const [image, setImage] = useState(null);
   const [email, setEmail] = useState("");
   const [employees, setEmployees] = useState([]);
+
 
   const handleAdd = async (e) => {
     e.preventDefault();
@@ -23,23 +26,16 @@ const AddEmployeeModal = (props) => {
     data.append("phone", phone);
 
     try {
-      await Axios.post("http://localhost:8000/api/team", data, {
+      await Axios.post("http://localhost:8000/api/employee", data, {
         headers: {
           "content-type": "multipart/form-data",
           Authorization: "Bearer " + localStorage.getItem("token"),
         },
       }).then((response) => {
-        // setEmployees([...employees, {
-        //   identity: identity,
-        //   firstname: firstName,
-        //   lastname: lastName,
-        //   email: email,
-        //   image: image,
-        //   phone: phone,
-        // }]);
-        console.log(response.data);
-        console.log(employees);
+        setEmployees(response.data);
+        alert("Successfully Created A New Employee!!!!")
         localStorage.getItem("token");
+        setRender(prev => !prev);
       });
     } catch (error) {
       console.log(error);

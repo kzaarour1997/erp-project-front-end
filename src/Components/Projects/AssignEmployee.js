@@ -6,6 +6,9 @@ const AssignEmployee = (props) => {
   // console.log(props.employee);
   // console.log(props.project);
   // console.log(props.employeeProjects)
+  // console.log(props.projectId )
+  // console.log(props.listRole);
+  // console.log(props.team)
   return (
     <div
       className="col-md-1"
@@ -18,7 +21,10 @@ const AssignEmployee = (props) => {
               assignModal={props.assignTo}
               assignEmployee={props.employee}
               assignProject={props.project}
-              empProj = {props.employeeProjects}
+              empProj={props.employeeProjects}
+              idproj={props.projectId}
+              roless={props.listRole}
+              teams={props.team}
             />,
             {
               title: "Assign Employee To A Project",

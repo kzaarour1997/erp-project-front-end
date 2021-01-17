@@ -1,10 +1,13 @@
 import React from "react";
-import ViewAdmin from './ViewAdmin';
-import UpdateAdmin from './UpdateAdmin';
-import DeleteAdmin from './DeleteAdmin';
+import ViewAdmin from "./ViewAdmin";
+import UpdateAdmin from "./UpdateAdmin";
+import DeleteAdmin from "./DeleteAdmin";
 
 const AdminInfo = (props) => {
-  
+  const { setRender } = props.render;
+  // console.log({setRender});
+
+
   return (
     <div className="row background" key={props.admin.id}>
       <div className="info">
@@ -21,7 +24,8 @@ const AdminInfo = (props) => {
           />
         </div>
         <div className="col-md-5">
-        <p  style={{
+          <p
+            style={{
               color: "white",
               transform: "skewX(20deg)",
               fontSize: "14px",
@@ -29,15 +33,16 @@ const AdminInfo = (props) => {
               position: "relative",
               left: "12vw",
               width: "22vw",
-              textAlign:"center"
-            }}>
-          {props.admin.firstname} {props.admin.lastname}
-        </p>
+              textAlign: "center",
+            }}
+          >
+            {props.admin.firstname} {props.admin.lastname}
+          </p>
         </div>
-        <div style={{ position: "relative", left: "18.4vw"  }}>
+        <div style={{ position: "relative", left: "18.4vw" }}>
           <ViewAdmin viewAdm={props.admin} />
-          <UpdateAdmin updateAdmin={props.admin} />
-          <DeleteAdmin deleteAdmin={props.admin} />
+          <UpdateAdmin updateAdmin={props.admin} rendering = {{setRender}}/>
+          <DeleteAdmin deleteAdmin={props.admin} rendering = {{setRender}}/>
         </div>
       </div>
     </div>

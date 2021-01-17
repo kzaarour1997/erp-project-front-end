@@ -9,11 +9,20 @@ const ViewModal = (props) => {
 
   const dialog = useDialog();
   const [value, setValue] = useState();
+
+  console.log(props.projj && props.projj.team);
+
   return (
     <div>
-      <p>
-       skhsjsk
-      </p>
+      <h3>Description </h3>
+      <p style={{ textAlign: "center" }}>{props.projj.description}</p>
+      <h3>Assigned To</h3>
+      <table style={{margin:"0 auto"}}>
+        {props.projj &&
+          props.projj.team.map((val) => {
+            return <tr>{val.name}</tr>;
+          })}
+      </table>
       <button
         onClick={() => {
           // Сlose the dialog and return the value

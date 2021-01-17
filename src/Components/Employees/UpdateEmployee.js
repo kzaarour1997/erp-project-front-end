@@ -3,6 +3,8 @@ import React from "react";
 import ModalUpdate from "./ModalUpdate";
 
 function UpdateEmployee(props) {
+  const setRender = props.render;
+  // console.log({setRender})
   return (
     <div
       className="col-md-1"
@@ -16,7 +18,7 @@ function UpdateEmployee(props) {
       <button
         onClick={async () => {
           const result = await CustomDialog(
-            <ModalUpdate updateinfo={props.updateEmployee} />,
+            <ModalUpdate updateinfo={props.updateEmployee} render ={setRender}/>,
             {
               title: "Update Employees Information",
               showCloseIcon: true,

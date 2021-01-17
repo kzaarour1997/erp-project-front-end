@@ -35,18 +35,10 @@ const App = () => {
 
   const store = createStore(() => [], {}, applyMiddleware());
 
-  const [users, setUsers] = useState([]);
+  // const [users, setUsers] = useState([]);
 
-  useEffect(() => {
-    Axios.get("http://localhost:8000/api/users", {
-      headers: {
-        "content-type": "multipart/form-data",
-        Authorization: "Bearer " + localStorage.getItem("token"),
-      },
-    }).then((response) => {
-      setUsers(response.data);
-    });
-  }, []);
+  //to refresh the page on click
+  const [render, setRender] = useState(false);
 
   const [listEmployee, setListEmployee] = useState([]);
 
@@ -60,7 +52,7 @@ const App = () => {
       setListEmployee(response.data);
       // console.log(response.data[0].created_at);
     });
-  }, []);
+  }, [render]);
 
   const [listTeam, setListTeam] = useState([]);
 
@@ -73,7 +65,7 @@ const App = () => {
     }).then((response) => {
       setListTeam(response.data);
     });
-  }, []);
+  }, [render]);
 
   const [listProject, setListProject] = useState([]);
 
@@ -87,7 +79,7 @@ const App = () => {
       // console.log(response.data&&response.data[0].id);
       setListProject(response.data);
     });
-  }, []);
+  }, [render]);
 
   const [role, setRole] = useState([]);
 
@@ -101,7 +93,7 @@ const App = () => {
       // console.log(response.data&&response.data[0].id);
       setRole(response.data);
     });
-  }, []);
+  }, [render]);
 
   const [employeeProjectRole, setEmployeeProjectRole] = useState([]);
 
@@ -115,13 +107,12 @@ const App = () => {
       // console.log(response.data&&response.data[0].id);
       setEmployeeProjectRole(response.data);
     });
-  }, []);
+  }, [render]);
+
 
   return (
     <dataContext.Provider
       value={{
-        users,
-        setUsers,
         listEmployee,
         setListEmployee,
         listTeam,
@@ -131,7 +122,9 @@ const App = () => {
         role,
         setRole,
         employeeProjectRole,
-        setEmployeeProjectRole
+        setEmployeeProjectRole,
+        render,
+        setRender
       }}
     >
       <Provider store={store}>

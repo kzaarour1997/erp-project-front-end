@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import Axios from "axios";
 
-const AddAdminModal = ({ props }) => {
+const AddAdminModal = (props) => {
   // console.log(props);
 
   const [firstName, setFirstName] = useState("");
@@ -12,7 +12,8 @@ const AddAdminModal = ({ props }) => {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
 
-  const { setRender } = props;
+  const { setRender } = props.render;
+  // console.log(setRender)
 
   const handleAdd = async (e) => {
     e.preventDefault();
@@ -30,8 +31,9 @@ const AddAdminModal = ({ props }) => {
           Authorization: "Bearer " + localStorage.getItem("token"),
         },
       }).then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         localStorage.getItem("token");
+        alert("Successfully Created A New Admin!!!!")
         setRender((prev) => !prev);
       });
     } catch (error) {

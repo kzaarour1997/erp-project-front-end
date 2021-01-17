@@ -4,12 +4,13 @@ import Axios from "axios";
 
 import "./Teams.css";
 
-const AddTeam = ({ props }) => {
+const AddTeam = (props) => {
   // console.log(props);
   const [teamName, setTeamName] = useState("");
-  const { setRender } = props;
 
-  const [employees, setEmployees] = useState([]);
+  const { setRender } = props.render;
+  console.log(setRender);
+
 
   const handleAdd = async (e) => {
     e.preventDefault();
@@ -24,8 +25,9 @@ const AddTeam = ({ props }) => {
         },
       }).then((response) => {
         console.log(response.data);
-        console.log(employees);
+        // console.log(employees);
         localStorage.getItem("token");
+        alert("Successfully Created A New Team!!!!");
         setRender((prev) => !prev);
       });
     } catch (error) {

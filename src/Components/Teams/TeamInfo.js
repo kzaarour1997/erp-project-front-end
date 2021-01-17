@@ -3,7 +3,9 @@ import ViewTeam from "./ViewTeam";
 import DeleteTeam from "./DeleteTeam";
 
 const TeamInfo = (props) => {
-  console.log(props);
+  // console.log(props);
+  const { setRender } = props.render;
+  // console.log({setRender});
   
 
   return (
@@ -39,7 +41,7 @@ const TeamInfo = (props) => {
         </div>
         <div style={{ position: "relative", left: "29.2vw" }}>
           <ViewTeam viewTeam={props.team} />
-          <DeleteTeam deleteTeam={props.team} errorMsg={props.errorMsg}/>
+          <DeleteTeam deleteTeam={props.team} errorMsg={props.errorMsg} render = {{setRender}}/>
         </div>
       </div>
     </div>

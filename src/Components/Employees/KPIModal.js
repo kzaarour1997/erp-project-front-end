@@ -17,6 +17,9 @@ const KPIModal = (props) => {
 
   const [kpi, setKpi] = useState(props.modalKpi.kpis);
 
+  const { setRender } = props.render;
+  // console.log({ setRender });
+
   const creatKpi = async (e) => {
     e.preventDefault();
     const data = new FormData();
@@ -33,6 +36,8 @@ const KPIModal = (props) => {
       }).then((response) => {
         console.log(response.data);
         localStorage.getItem("token");
+        alert("Successfully Created!!");
+        setRender((prev) => !prev);
       });
     } catch (error) {
       console.log(error);
