@@ -12,8 +12,10 @@ import {
 } from "react-router-dom";
 import Teams from "./Components/Teams/Teams";
 import Projects from "./Components/Projects/Projects";
-import Reports from "./Components/Reports";
+import Reports from "./Components/Reports/Reports";
 import Employees from "./Components/Employees/Employees";
+import KpiReports from "./Components/Reports/KpiReports";
+
 import Axios from "axios";
 import dataContext from "./Components/Context/Context";
 
@@ -109,7 +111,6 @@ const App = () => {
     });
   }, [render]);
 
-
   return (
     <dataContext.Provider
       value={{
@@ -124,7 +125,7 @@ const App = () => {
         employeeProjectRole,
         setEmployeeProjectRole,
         render,
-        setRender
+        setRender,
       }}
     >
       <Provider store={store}>
@@ -137,6 +138,7 @@ const App = () => {
             <Route exact path="/Teams" component={Teams} />
             <Route exact path="/Projects" component={Projects} />
             <Route exact path="/Reports" component={Reports} />
+            <Route path="/kpiReports" component={KpiReports} />
           </Switch>
         </Router>
       </Provider>

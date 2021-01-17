@@ -40,6 +40,7 @@ const ProjectInfo = (props) => {
             projectId={props.projId}
             listRole={props.role}
             team={props.listTeam}
+            rendering = {{setRender}}
           />
           <DeleteProject project={props.project} rendering={{ setRender }} />
         </div>
