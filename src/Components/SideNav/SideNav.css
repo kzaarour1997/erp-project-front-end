@@ -200,3 +200,16 @@
   padding: 5px 42px;
 }
   /*------------------------ Modal Body End -------------------------*/
+
+  @media only screen and (max-width: 480px){
+    .bm-menu > .bm-item-list{
+      width: 53vw;
+    }
+    .bm-cross-button{
+      position: absolute;
+      height: 24px;
+      right: 8px;
+      top: 8px;
+      left: 42vw;
+    }
+  } 

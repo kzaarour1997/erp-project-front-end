@@ -235,3 +235,28 @@ strong {
 .error_message {
   color: red;
 }
+
+@media only screen and (max-width: 480px){
+
+#change1{
+  position: relative;
+  top: 21vw;
+}
+
+.search {
+  position: relative;
+  left: 23%;
+  top: -6vw;
+}
+.user-image {
+  height: 15vw;
+  width: 15vw;
+  border-radius: 50%;
+}
+
+.username-section{
+  position: relative;
+  top: -15vw;
+  left: -3vw;
+}
+}

@@ -16,9 +16,13 @@ function ModalUpdate(props) {
   const [newLastName, setNewLastName] = useState(props.updateinfo.lastname);
   const [newEmail, setNewEmail] = useState(props.updateinfo.email);
   const [newImage, setNewImage] = useState(null);
+  const [lastnameErr, setLastnameErr] = useState("");
+  const [emailErr, setEmailErr] = useState("");
+  const [firstnameErr, setFirstnameErr] = useState("");
+  const [imageErr, setImageErr] = useState("");
+  const [infoErr, setInfoErr] = useState("");
 
-  console.log(props.updateinfo.image);
-
+  // console.log(props.updateinfo.image);
 
   const updateInfo = async (id) => {
     const data = new FormData();
@@ -42,8 +46,41 @@ function ModalUpdate(props) {
         alert("Successfully Updated!!");
         setRender((prev) => !prev);
       });
-    } catch (err) {
-      console.log(err);
+    } catch (error) {
+      if (
+        error.response.data.error.firstname &&
+        error.response.data.error.lastname &&
+        error.response.data.error.email &&
+        error.response.data.error.image
+      ) {
+        setFirstnameErr(error.response.data.error.firstname);
+        setLastnameErr(error.response.data.error.lastname);
+        setEmailErr(error.response.data.error.email);
+        setImageErr(error.response.data.error.image);
+      } else if (
+        error.response.data.error.firstname ||
+        error.response.data.error.lastname ||
+        error.response.data.error.email ||
+        error.response.data.error.image
+      ) {
+        setInfoErr("Your information are not Valid!");
+      } else if (!error.response.data.error.firstname) {
+        setFirstnameErr("");
+      } else if (!error.response.data.error.lastname) {
+        setLastnameErr("");
+      } else if (!error.response.data.error.email) {
+        setEmailErr("");
+      } else if (!error.response.data.error.image) {
+        setImageErr("");
+      } else if (error.response.data.error.firstname) {
+        setFirstnameErr(error.response.data.error.firstname);
+      } else if (error.response.data.error.lastname) {
+        setLastnameErr(error.response.data.error.lastname);
+      } else if (error.response.data.error.email) {
+        setEmailErr(error.response.data.error.email);
+      } else if (error.response.data.error.image) {
+        setImageErr(error.response.data.error.image);
+      }
     }
 
     if (!localStorage.getItem("token")) {
@@ -61,7 +98,9 @@ function ModalUpdate(props) {
         top: "1vw",
       }}
     >
+      {infoErr ? <span class="error_msg">{infoErr}</span> : ""} <br />
       <label className="updateLabel">FirstName</label>
+      {firstnameErr ? <span class="error_msg">{firstnameErr}</span> : ""}
       <input
         type="text"
         className="form-control"
@@ -72,6 +111,7 @@ function ModalUpdate(props) {
         value={newfirstName}
       />
       <label className="updateLabel">LastName</label>
+      {lastnameErr ? <span class="error_msg">{lastnameErr}</span> : ""}
       <input
         type="text"
         className="form-control"
@@ -82,6 +122,7 @@ function ModalUpdate(props) {
         value={newLastName}
       />
       <label className="updateLabel">Email</label>
+      {emailErr ? <span class="error_msg">{emailErr}</span> : ""}
       <input
         type="text"
         className="form-control"
@@ -92,6 +133,7 @@ function ModalUpdate(props) {
         value={newEmail}
       />
       <label className="updateLabel">Image</label>
+      {imageErr ? <span class="error_msg">{imageErr}</span> : ""}
       <input
         className="form-control"
         type="file"
