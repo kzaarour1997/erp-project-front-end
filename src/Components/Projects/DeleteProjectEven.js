@@ -30,7 +30,7 @@ const DeleteProjectEven = (props) => {
   return (
     <div
       className="col-md-1"
-      style={{ marginTop: "15px", marginLeft: "-16px" }}
+      style={{ marginTop: "15px", marginLeft: "6px" }}
     >
       <button
         className="Button Button_delete_Even Button_delete_Skew_Even"

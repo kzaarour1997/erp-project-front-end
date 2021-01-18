@@ -11,6 +11,10 @@ const AddProjects = (props) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage, setPostsPerPage] = useState(6);
 
+  const [projErr, setProjErr] = useState("");
+  const [descErr, setDescErr] = useState("");
+  const [infoErr, setInfoErr] = useState("");
+
   const { setRender } = props.render;
   // console.log(setRender)
 
@@ -37,14 +41,34 @@ const AddProjects = (props) => {
         setRender((prev) => !prev);
       });
     } catch (error) {
-      console.log(error);
+      // console.log(error);
+      if (error.response.data.error.name && error.response.data.error.name) {
+        setProjErr(error.response.data.error.name);
+        setDescErr(error.response.data.error.description);
+      } else if (
+        error.response.data.error.name ||
+        error.response.data.error.name
+      ) {
+        setInfoErr("Information invalid");
+      } else if (!error.response.data.error.name) {
+        setProjErr("");
+      } else if (error.response.data.error.name) {
+        setDescErr(error.response.data.error.name);
+      } else if (!error.response.data.error.description) {
+        setDescErr("");
+      } else if (error.response.data.error.description) {
+        setDescErr(error.response.data.error.description);
+      }
     }
   };
 
   return (
     <div className="modal fade" id="myModal" role="dialog">
       <div className="modal-dialog modal-lg">
-        <div className="modal-content modal-content-project ">
+        <div
+          className="modal-content modal-content-project "
+          style={{ height: "47vw" }}
+        >
           <div className="modal-header">
             <button type="button" className="close" data-dismiss="modal">
               &times;
@@ -60,9 +84,12 @@ const AddProjects = (props) => {
                   marginLeft: "50px",
                 }}
               ></form>
+              {infoErr ? <span class="error_msg">{infoErr}</span> : ""}
+              <br />
               <label htmlFor="name" className="label-admin">
                 Project Name:
               </label>
+              {projErr ? <span class="error_msg">{projErr}</span> : ""}
               <input
                 value={projectName}
                 className="form-control"
@@ -76,12 +103,14 @@ const AddProjects = (props) => {
               <label htmlFor="lastname" className="label-admin">
                 Description:
               </label>
+              {descErr ? <span class="error_msg">{descErr}</span> : ""}
               <br />
               <textarea
                 id="textarea"
                 name="textarea"
                 rows="4"
                 cols="50"
+                style={{ width: "37.5vw" }}
                 onChange={(e) => {
                   setDescription(e.target.value);
                 }}
@@ -92,7 +121,7 @@ const AddProjects = (props) => {
                 style={{
                   position: "relative",
                   left: "-25vw",
-                  top: "3vw",
+                  top: "4vw",
                   marginBottom: "2vw",
                 }}
                 onClick={handleAdd}
@@ -101,7 +130,13 @@ const AddProjects = (props) => {
               </button>
             </div>
           </form>
-          <div className="modal-footer modal-footer-project">
+          <div
+            className="modal-footer modal-footer-project"
+            style={{
+              position: "relative",
+              top: "7.9vw",
+            }}
+          >
             <button
               type="button"
               className="btn btn-default"

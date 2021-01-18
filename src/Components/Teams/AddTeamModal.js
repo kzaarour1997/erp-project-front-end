@@ -9,7 +9,8 @@ const AddTeam = (props) => {
   const [teamName, setTeamName] = useState("");
 
   const { setRender } = props.render;
-  console.log(setRender);
+  // console.log(setRender);
+  const [nameErr , setNameErr] = useState('');
 
 
   const handleAdd = async (e) => {
@@ -31,7 +32,9 @@ const AddTeam = (props) => {
         setRender((prev) => !prev);
       });
     } catch (error) {
-      console.log(error);
+      if(error.response.data.error.name){
+        setNameErr(error.response.data.error.name);
+      }
     }
   };
 
@@ -47,6 +50,11 @@ const AddTeam = (props) => {
           </div>
           <form encType="multipart/form-data">
             <div className="modal-body">
+            {nameErr ? (
+                <span class="error_msg">{nameErr}</span>
+              ) : (
+                ""
+              )} <br/>
               <label htmlFor="team" className="label">
                 Name
               </label>

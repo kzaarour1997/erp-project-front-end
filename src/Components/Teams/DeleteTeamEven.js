@@ -33,7 +33,7 @@ const DeleteTeam = (props) => {
   return (
     <div
       className="col-md-1"
-      style={{ marginTop: "15px", marginLeft: "-16px" }}
+      style={{ marginTop: "15px", marginLeft: "-9px" }}
     >
       {deleteList.length > 0 ? (
         <button

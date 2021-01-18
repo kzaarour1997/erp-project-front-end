@@ -17,6 +17,12 @@ function ModalUpdate(props) {
   const [newImage, setNewImage] = useState(null);
   const [newPhone, setNewPhone] = useState(props.updateinfo.phone);
   const [newEmail, setNewEmail] = useState(props.updateinfo.email);
+  const [infoErr, setInfoErr] = useState("");
+  const [lastnameErr, setLastnameErr] = useState("");
+  const [emailErr, setEmailErr] = useState("");
+  const [firstnameErr, setFirstnameErr] = useState("");
+  const [imageErr, setImageErr] = useState("");
+  const [phoneErr, setPhoneErr] = useState("");
 
   const updateInfo = async (id) => {
     const data = new FormData();
@@ -42,8 +48,49 @@ function ModalUpdate(props) {
         alert("Successfully Updated!!");
         setRender((prev) => !prev);
       });
-    } catch (err) {
-      console.log(err);
+    } catch (error) {
+      if (
+        error.response.data.error.firstname &&
+        error.response.data.error.lastname &&
+        error.response.data.error.email &&
+        error.response.data.error.phone &&
+        error.response.data.error.image
+      ) {
+        setFirstnameErr(error.response.data.error.firstname);
+        setLastnameErr(error.response.data.error.lastname);
+        setEmailErr(error.response.data.error.email);
+        setImageErr(error.response.data.error.image);
+        setPhoneErr(error.response.data.error.phone);
+      } else if (
+        error.response.data.error.firstname ||
+        error.response.data.error.lastname ||
+        error.response.data.error.email ||
+        error.response.data.error.phone ||
+        error.response.data.error.identity ||
+        error.response.data.error.image
+      ) {
+        setInfoErr("Your information are not Valid!");
+      } else if (!error.response.data.error.firstname) {
+        setFirstnameErr("");
+      } else if (!error.response.data.error.lastname) {
+        setLastnameErr("");
+      } else if (!error.response.data.error.email) {
+        setEmailErr("");
+      } else if (!error.response.data.error.phone) {
+        setPhoneErr("");
+      } else if (!error.response.data.error.image) {
+        setImageErr("");
+      } else if (error.response.data.error.firstname) {
+        setFirstnameErr(error.response.data.error.firstname);
+      } else if (error.response.data.error.lastname) {
+        setLastnameErr(error.response.data.error.lastname);
+      } else if (error.response.data.error.email) {
+        setEmailErr(error.response.data.error.email);
+      } else if (error.response.data.error.phone) {
+        setPhoneErr(error.response.data.error.phone);
+      } else if (error.response.data.error.image) {
+        setImageErr(error.response.data.error.image);
+      }
     }
   };
 
@@ -56,6 +103,8 @@ function ModalUpdate(props) {
         marginTop: "15px",
       }}
     >
+      {infoErr ? <span class="error_msg">{infoErr}</span> : ""}
+      <br />
       <label className="updateLabel">Identity</label>
       <input
         type="text"
@@ -67,6 +116,7 @@ function ModalUpdate(props) {
         }}
         value={newIdentity}
       />
+      {firstnameErr ? <span class="error_msg">{firstnameErr}</span> : ""}
       <label className="updateLabel">Firstname</label>
       <input
         type="text"
@@ -78,6 +128,7 @@ function ModalUpdate(props) {
         value={newFirstName}
       />
       <label className="updateLabel">Lastname</label>
+      {lastnameErr ? <span class="error_msg">{lastnameErr}</span> : ""}
       <input
         type="text"
         className="form-control"
@@ -88,6 +139,7 @@ function ModalUpdate(props) {
         value={newLastName}
       />
       <label className="updateLabel">Email</label>
+      {emailErr ? <span class="error_msg">{emailErr}</span> : ""}
       <input
         type="text"
         className="form-control"
@@ -98,6 +150,7 @@ function ModalUpdate(props) {
         value={newEmail}
       />
       <label className="updateLabel">Image</label>
+      {imageErr ? <span class="error_msg">{imageErr}</span> : ""}
       <input
         className="form-control"
         type="file"
@@ -110,6 +163,7 @@ function ModalUpdate(props) {
         }}
       />
       <label className="updateLabel">Phone</label>
+      {phoneErr ? <span class="error_msg">{phoneErr}</span> : ""}
       <input
         className="form-control"
         type="text"

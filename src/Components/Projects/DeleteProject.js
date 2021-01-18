@@ -31,7 +31,7 @@ const DeleteProject = (props) => {
   return (
     <div
       className="col-md-1"
-      style={{ marginTop: "15px", marginLeft: "-16px" }}
+      style={{ marginTop: "15px", marginLeft: "-13px" }}
     >
       <button
         className="Button Button_delete  Button_delete_Admin Button_delete_Skew_Admin"
